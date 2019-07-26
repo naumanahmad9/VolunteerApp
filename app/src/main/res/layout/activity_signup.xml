@@ -37,7 +37,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:entries="Male Female"
+        android:entries="@array/gender_spinner_entries"
         style="@style/Widget.AppCompat.Spinner.Underlined"
         android:hint="Select"
         app:layout_constraintEnd_toEndOf="parent"
