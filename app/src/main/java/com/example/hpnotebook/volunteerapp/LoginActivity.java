@@ -41,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
                     fieldCheck = true;
                 }
                 if (!fieldCheck) {
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    startActivity(new Intent(LoginActivity.this, SearchEventsActivity.class));
+                    finish();
                 }
             }
         });

@@ -19,7 +19,8 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".SearchEventsActivity"></activity>
+        <activity android:name=".SearchEventsActivity" />
+        <activity android:name=".EventsNearbyActivity"></activity>
     </application>
 
 </manifest>
