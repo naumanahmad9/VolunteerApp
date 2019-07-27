@@ -1,8 +1,18 @@
 <resources>
+
     <string name="app_name">VolunteerApp</string>
 
     <string-array name="gender_spinner_entries">
         <item>Male</item>
         <item>Female</item>
     </string-array>
+
+    <string-array name="acc_type_spinner_entries">
+        <item>Volunteer</item>
+        <item>Organization</item>
+    </string-array>
+
+    <string name="gender_hint">Gender</string>
+    <string name="acc_type_hint">Account Type</string>
+
 </resources>

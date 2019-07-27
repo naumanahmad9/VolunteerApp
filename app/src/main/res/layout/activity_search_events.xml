@@ -6,16 +6,6 @@
     android:layout_height="wrap_content"
     tools:context=".SearchEventsActivity">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Click me"
-        android:backgroundTint="@color/colorPrimary"
-        android:onClick="showSelectedItems"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
     <ListView
         android:id="@+id/lv_events"
         android:layout_width="match_parent"

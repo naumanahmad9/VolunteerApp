@@ -6,167 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".SignupActivity">
 
-
     <EditText
-        android:id="@+id/login_contact3"
-        android:layout_width="334dp"
+        android:id="@+id/et_name"
+        android:layout_width="349dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/textView11"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="31dp"
+        android:paddingStart="12dp"
+        android:hint="Full Name"
+        android:textSize="20sp"
+        android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="306dp"
-        android:layout_marginBottom="8dp"
-        android:text="Full Name"
-        app:layout_constraintBottom_toTopOf="@+id/login_contact3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/login_contact2"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="334dp"
+    <EditText
+        android:id="@+id/et_contact"
+        android:layout_width="349dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
+        android:layout_marginStart="31dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="8dp"
-        android:entries="@array/gender_spinner_entries"
-        android:hint="Select"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="315dp"
-        android:text="Gender"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.35"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_contact3" />
-
-    <EditText
-        android:id="@+id/login_password2"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="20dp"
-        android:ems="10"
-        android:inputType="numberPassword"
-        app:layout_constraintBottom_toTopOf="@+id/login_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="300dp"
-        android:layout_marginBottom="8dp"
-        android:text="Repeat Password"
-        app:layout_constraintBottom_toTopOf="@+id/login_password2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password"
-        app:layout_constraintVertical_chainStyle="spread_inside" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="321dp"
-        android:layout_marginBottom="8dp"
-        android:text="Contact no."
-        app:layout_constraintBottom_toTopOf="@+id/login_contact"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_contact2" />
-
-    <EditText
-        android:id="@+id/login_contact"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="6dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/textView9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="300dp"
-        android:layout_marginBottom="8dp"
-        android:text="Password"
-        app:layout_constraintBottom_toTopOf="@+id/login_password"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_contact" />
-
-    <EditText
-        android:id="@+id/login_password"
-        android:layout_width="334dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="31dp"
-        android:layout_marginBottom="8dp"
-        android:ems="10"
-        android:inputType="numberPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textView8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="118dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="231dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="35dp"
-        android:text="Sign up"
+        android:paddingStart="12dp"
+        android:hint="Contact Number"
         android:textSize="20sp"
+        android:textColorHint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_password2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+    <EditText
+        android:id="@+id/et_password"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="31dp"
+        android:paddingStart="12dp"
+        android:hint="Password"
+        android:textSize="20sp"
+        android:textColorHint="@color/colorAccent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_contact" />
+
+    <Spinner
+        android:id="@+id/spinner_gender"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/gender_spinner_entries"
+        android:spinnerMode="dialog"
+        android:prompt="@string/gender_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+
+    <Spinner
+        android:id="@+id/spinner_acc_type"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="349dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:entries="@array/acc_type_spinner_entries"
+        android:spinnerMode="dialog"
+        android:prompt="@string/acc_type_hint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_gender" />
 
 </android.support.constraint.ConstraintLayout>
