@@ -15,4 +15,9 @@
     <string name="gender_hint">Gender</string>
     <string name="acc_type_hint">Account Type</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</string>
 </resources>

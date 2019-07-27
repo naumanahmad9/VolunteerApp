@@ -84,4 +84,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner_gender" />
 
+    <Button
+        android:layout_width="132dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@color/colorPrimary"
+        android:text="Sign Up"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_acc_type"
+        tools:layout_editor_absoluteX="248dp" />
+
 </android.support.constraint.ConstraintLayout>
