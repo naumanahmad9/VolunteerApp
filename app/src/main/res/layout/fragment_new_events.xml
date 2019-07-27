@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Fragments.NewEventsFragment">
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <ListView
             android:id="@+id/lv_new_events"
@@ -23,7 +19,6 @@
             android:src="@drawable/ic_add_circle"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            />
-    </RelativeLayout>
+            android:contentDescription="add event" />
 
-</FrameLayout>
+</RelativeLayout>
