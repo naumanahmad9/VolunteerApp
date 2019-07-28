@@ -1,4 +1,4 @@
-package com.example.hpnotebook.volunteerapp;
+package com.example.hpnotebook.volunteerapp.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.hpnotebook.volunteerapp.R;
 
 public class LoginActivity extends AppCompatActivity {
 

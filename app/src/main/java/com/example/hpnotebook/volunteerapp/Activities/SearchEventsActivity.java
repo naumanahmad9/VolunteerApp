@@ -1,4 +1,4 @@
-package com.example.hpnotebook.volunteerapp;
+package com.example.hpnotebook.volunteerapp.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.hpnotebook.volunteerapp.R;
 
 import java.util.ArrayList;
 import java.util.Objects;

@@ -1,9 +1,11 @@
-package com.example.hpnotebook.volunteerapp;
+package com.example.hpnotebook.volunteerapp.Activities;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.hpnotebook.volunteerapp.R;
 
 import java.util.Objects;
 

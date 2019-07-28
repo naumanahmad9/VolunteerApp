@@ -4,26 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity">
+    tools:context=".Activities.DashboardActivity">
 
     <android.support.design.widget.TabLayout
-        android:id="@+id/tabs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/view_pager"
+        android:id="@+id/tl_dashboard"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabBackground="@color/colorPrimary"
-        app:tabIndicatorColor="@android:color/white"
+        app:tabIndicatorColor="@android:color/black"
         app:tabInlineLabel="true"
-        app:tabMaxWidth="140dp"
-        app:tabMode="scrollable"
-        app:tabTextColor="@android:color/white" />
+        app:tabTextColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/black"
+        />
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/view_pager"
+        android:id="@+id/vp_dashboard"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v4.view.ViewPager>
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_dashboard"></android.support.v4.view.ViewPager>
 
 </android.support.constraint.ConstraintLayout>

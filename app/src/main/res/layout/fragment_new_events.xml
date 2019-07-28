@@ -12,13 +12,15 @@
         </ListView>
 
         <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:paddingEnd="12dp"
-            android:paddingBottom="12dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:paddingBottom="70dp"
             android:src="@drawable/ic_add_circle"
+            android:layout_marginEnd="-20dp"
+            android:layout_gravity="bottom"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:contentDescription="add event" />
+            android:contentDescription="add event"
+            />
 
 </RelativeLayout>

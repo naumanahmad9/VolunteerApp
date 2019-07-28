@@ -12,4 +12,10 @@
         <item name="colorAccent">#1fea00</item>
         <item name="android:textColorSecondary">#ffa731</item>
     </style>
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
