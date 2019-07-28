@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    app:cardElevation="10dp"
+    app:cardElevation="8dp"
     app:cardCornerRadius="3dp"
     app:cardUseCompatPadding="true"
     >
@@ -14,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/event_image"
@@ -46,14 +45,38 @@
             />
 
         <TextView
-            android:id="@+id/event_time"
+            android:id="@+id/event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/time_icon"
             android:layout_below="@id/event_title"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
-            android:text="28 Jul, 11:00 AM"
+            android:text="28 July"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_comma"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/event_date"
+            android:layout_below="@id/event_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="2dp"
+            android:text=","
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/event_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/event_date"
+            android:layout_below="@id/event_title"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="10dp"
+            android:text="11:00 AM"
             android:textSize="16sp"
             />
 
@@ -69,6 +92,7 @@
             />
 
         <TextView
+            android:id="@+id/event_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/location_icon"

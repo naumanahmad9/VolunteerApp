@@ -26,7 +26,7 @@ public class SearchEventsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_events);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Search Events");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Search Events by Category");
 
         ListView chl = (ListView) findViewById(R.id.lv_events);
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);

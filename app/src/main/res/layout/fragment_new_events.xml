@@ -8,10 +8,12 @@
         <ListView
             android:id="@+id/lv_new_events"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp">
         </ListView>
 
         <ImageView
+            android:id="@+id/add_new_event"
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:paddingBottom="70dp"

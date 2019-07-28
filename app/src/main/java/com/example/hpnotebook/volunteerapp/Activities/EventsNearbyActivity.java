@@ -15,7 +15,9 @@ public class EventsNearbyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_events_nearby);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Events Nearby");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
     }
 }

@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".Fragments.AchievedEventsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ListView
+        android:id="@+id/lv_achieved_events"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textStyle="bold"
-        android:text="Achieved Fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp">
+    </ListView>
 
 </FrameLayout>

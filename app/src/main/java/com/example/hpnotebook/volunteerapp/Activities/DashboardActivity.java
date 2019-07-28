@@ -37,10 +37,6 @@ public class DashboardActivity extends AppCompatActivity {
         vp.setAdapter(adapter);
         tl.setupWithViewPager(vp);
 
-//        tl.getTabAt(1).setIcon(android.R.drawable.btn_star);
-//        tl.getTabAt(2).setIcon(android.R.drawable.gallery_thumb);
-//        tl.getTabAt(3).setIcon(android.R.drawable.ic_media_ff);
-
     }
     private void init() {
         vp = findViewById(R.id.vp_dashboard);
