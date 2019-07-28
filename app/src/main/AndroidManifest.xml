@@ -23,7 +23,8 @@
         <activity android:name=".Activities.EventDetailActivity" />
         <activity android:name=".Activities.OrgProfileActivity" />
         <activity android:name=".Activities.SplashScreenActivity" />
-        <activity android:name=".Activities.AddEventActivity"></activity>
+        <activity android:name=".Activities.AddEventActivity" />
+        <activity android:name=".Activities.UserProfileActivity"></activity>
     </application>
 
 </manifest>

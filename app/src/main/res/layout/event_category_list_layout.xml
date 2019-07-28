@@ -2,7 +2,7 @@
 
     <CheckedTextView
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/txt_lan"
+        android:id="@+id/events_ctv"
         android:theme="@style/checkBoxStyle"
         android:layout_width="match_parent"
         android:layout_height="64dp"

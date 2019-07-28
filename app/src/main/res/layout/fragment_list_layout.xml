@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="8dp"
     app:cardCornerRadius="3dp"
-    app:cardUseCompatPadding="true"
-    >
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -20,88 +18,80 @@
             android:layout_width="85dp"
             android:layout_height="85dp"
             android:layout_marginTop="2dp"
-            android:src="@drawable/treeplantation"
-            />
+            android:src="@drawable/treeplantation" />
 
         <TextView
             android:id="@+id/event_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tree Plantation"
-            android:textSize="20sp"
-            android:layout_toRightOf="@id/event_image"
             android:layout_marginStart="25dp"
-            />
+            android:layout_toRightOf="@id/event_image"
+            android:text="Tree Plantation"
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/time_icon"
             android:layout_width="22dp"
             android:layout_height="22dp"
+            android:layout_below="@id/event_title"
             android:layout_marginStart="25dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/ic_time_black"
-            android:layout_below="@id/event_title"
             android:layout_toRightOf="@id/event_image"
-            />
+            android:src="@drawable/ic_time_black" />
 
         <TextView
             android:id="@+id/event_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/time_icon"
             android:layout_below="@id/event_title"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/time_icon"
             android:text="28 July"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_comma"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/event_date"
             android:layout_below="@id/event_title"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/event_date"
             android:text=","
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/event_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/event_date"
             android:layout_below="@id/event_title"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/event_date"
             android:text="11:00 AM"
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/location_icon"
             android:layout_width="24dp"
             android:layout_height="24dp"
+            android:layout_below="@id/time_icon"
             android:layout_marginStart="25dp"
             android:layout_marginTop="8dp"
-            android:src="@drawable/ic_place"
-            android:layout_below="@id/time_icon"
             android:layout_toRightOf="@id/event_image"
-            />
+            android:src="@drawable/ic_place" />
 
         <TextView
             android:id="@+id/event_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/location_icon"
             android:layout_below="@id/event_time"
-            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/location_icon"
             android:text="Saddar, Karachi, Pakistan."
-            android:textSize="16sp"
-            />
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

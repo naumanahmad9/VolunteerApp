@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/device/ic_access_time_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_clear_all_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +33,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="3f3c46" />
-                            <entry key="outputName" value="ic_time_black" />
+                            <entry key="color" value="e18f2f" />
+                            <entry key="outputName" value="ic_category_orange" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\HP Notebook" />
                           </map>

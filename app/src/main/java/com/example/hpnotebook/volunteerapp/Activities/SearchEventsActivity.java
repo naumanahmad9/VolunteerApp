@@ -28,15 +28,18 @@ public class SearchEventsActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Search Events by Category");
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         ListView chl = (ListView) findViewById(R.id.lv_events);
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         String[] items = {"Education", "Social Work", "Healthcare", "Technology", "Cooking",
-                            "Events", "Donation", "Marketing", "The Citizen Foundation",
+                            "Events", "Donation", "Marketing", "The Citizens Foundation",
                             "SOS Village", "Transportation"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                                        R.layout.event_category_list_layout, R.id.txt_lan, items);
+                                        R.layout.event_category_list_layout, R.id.events_ctv, items);
 
         chl.setAdapter(adapter);
 
@@ -55,14 +58,6 @@ public class SearchEventsActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    public void showSelectedItems(View view){
-        String items = "";
-        for(String item : selectedItems){
-            items = "-" + items + "\n";
-        }
-        Toast.makeText(this, "You have selected \n"+items, Toast.LENGTH_SHORT).show();
     }
 
     @Override

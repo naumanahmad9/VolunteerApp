@@ -6,4 +6,256 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AddEventActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="325dp"
+                android:text="Event Title" />
+
+            <EditText
+                android:id="@+id/et_event_title"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="Add event name"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="283dp"
+                android:text="Event Description" />
+
+            <EditText
+                android:id="@+id/et_event_description"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:hint="Describe the event"
+                />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="324dp"
+                android:text="Event Date" />
+
+            <EditText
+                android:id="@+id/et_event_date"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="date"
+                android:hint="Day/Month" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="321dp"
+                android:text="Event Time" />
+
+            <EditText
+                android:id="@+id/et_event_time"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="time"
+                android:hint="15:00" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Location" />
+
+            <EditText
+                android:id="@+id/et_event_location"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. Karachi, Pakistan"/>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Category" />
+
+            <EditText
+                android:id="@+id/et_event_category"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. Education"/>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Stipend"
+                />
+
+            <EditText
+                android:id="@+id/et_event_stipend"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. 1000"/>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="145dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Refreshments" />
+
+            <EditText
+                android:id="@+id/et_event_refreshments"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. Snacks and Drinks"/>
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Dresscode" />
+
+            <EditText
+                android:id="@+id/et_event_dresscode"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. formal"
+                />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="175dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Medium of Language" />
+
+            <EditText
+                android:id="@+id/et_event_language"
+                android:layout_width="373dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="19dp"
+                android:ems="10"
+                android:inputType="text"
+                android:hint="e.g. English"/>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="297dp"
+                android:text="Event Image" />
+
+            <ImageView
+                android:id="@+id/event_image"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_add_photo" />
+
+            <Button
+                android:id="@+id/btn_event_add"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="284dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="28dp"
+                android:background="@color/colorPrimary"
+                android:text="Submit"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

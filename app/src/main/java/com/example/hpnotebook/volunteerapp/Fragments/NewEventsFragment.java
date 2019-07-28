@@ -1,14 +1,18 @@
 package com.example.hpnotebook.volunteerapp.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.hpnotebook.volunteerapp.Activities.AddEventActivity;
+import com.example.hpnotebook.volunteerapp.Activities.EventDetailActivity;
 import com.example.hpnotebook.volunteerapp.FragmentListAdapter;
 import com.example.hpnotebook.volunteerapp.R;
 
@@ -18,11 +22,14 @@ import com.example.hpnotebook.volunteerapp.R;
 public class NewEventsFragment extends Fragment {
 
     ListView lv_new_events;
-    String[] events = {"Tree Plantation", "Karachi Literature Festival", "Red Crescent", "World Wide Fund", "United Nations"};
+    String[] events = {"Tree Plantation", "Karachi Literature Festival", "Red Crescent",
+                        "World Wide Fund", "United Nations"};
     String[] dates = {"10 August", "10 October", "20 November", "1 December", "10 December"};
     String[] times = {"9 AM", "5 PM", "6 PM", "8 AM", "2 PM"};
     String[] locations = {"Islamabad", "Karachi", "Karachi", "Lahore", "Islamabad"};
-    int[] images = {R.drawable.treeplantation, R.drawable.karachi_volunteer_1, R.drawable.karachi_volunteer_2, R.drawable.lahore_volunteer_1, R.drawable.isl_volunteer_1};
+    int[] images = {R.drawable.treeplantation, R.drawable.karachi_volunteer_1,
+            R.drawable.karachi_volunteer_2, R.drawable.lahore_volunteer_1, R.drawable.isl_volunteer_1};
+    ImageView add_new_event;
 
     public NewEventsFragment() {
         // Required empty public constructor
@@ -43,10 +50,17 @@ public class NewEventsFragment extends Fragment {
         lv_new_events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-                Toast.makeText(getActivity(), events[pos], Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), EventDetailActivity.class));
             }
         });
 
+        add_new_event = view.findViewById(R.id.add_new_event);
+        add_new_event.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), AddEventActivity.class));
+            }
+        });
         return view;
     }
 
