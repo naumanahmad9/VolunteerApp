@@ -23,6 +23,5 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
-        // finish();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.hpnotebook.volunteerapp.Activities;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,25 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = login_contact.getText().toString();
-                String pass = login_pass.getText().toString();
-
-                if (email.isEmpty()) {
-                    login_contact.setError("This field is empty");
-                    fieldCheck = true;
-                }
-                if (pass.isEmpty()) {
-                    login_pass.setError("This field is empty");
-                    fieldCheck = true;
-                }
-                else if (pass.length() <= 6) {
-                    login_pass.setError("Password is too short");
-                    fieldCheck = true;
-                }
-                if (!fieldCheck) {
-                    startActivity(new Intent(LoginActivity.this, SearchEventsActivity.class));
-                    finish();
-                }
+                login();
             }
         });
 
@@ -60,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
             }
         });
 
@@ -70,5 +54,28 @@ public class LoginActivity extends AppCompatActivity {
         login_pass = findViewById(R.id.login_password);
         login_btn = findViewById(R.id.login_btn);
         tv_signup = findViewById(R.id.tv_signup);
+    }
+
+    public void login() {
+
+        String email = login_contact.getText().toString();
+        String pass = login_pass.getText().toString();
+
+        if (email.isEmpty()) {
+            login_contact.setError("This field is empty");
+            fieldCheck = true;
+        }
+        if (pass.isEmpty()) {
+            login_pass.setError("This field is empty");
+            fieldCheck = true;
+        }
+        else if (pass.length() <= 6) {
+            login_pass.setError("Password is too short");
+            fieldCheck = true;
+        }
+        if (!fieldCheck) {
+            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+            finish();
+        }
     }
 }

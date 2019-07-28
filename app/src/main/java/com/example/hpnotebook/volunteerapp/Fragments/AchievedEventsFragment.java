@@ -13,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.Activities.AddEventActivity;
+import com.example.hpnotebook.volunteerapp.Activities.EventDetailActivity;
 import com.example.hpnotebook.volunteerapp.FragmentListAdapter;
 import com.example.hpnotebook.volunteerapp.R;
 
@@ -49,7 +50,7 @@ public class AchievedEventsFragment extends Fragment {
         lv_new_events.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int pos, long id) {
-                Toast.makeText(getActivity(), events[pos], Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), EventDetailActivity.class));
             }
         });
 
