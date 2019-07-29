@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/abstract_bg1"
+    android:background="@drawable/login_bg"
     tools:context=".Activities.LoginActivity">
 
     <TextView
@@ -77,7 +77,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="35dp"
         android:layout_marginBottom="26dp"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/button_bg"
         android:text="Login"
         android:textStyle="bold"
         android:textSize="20sp"

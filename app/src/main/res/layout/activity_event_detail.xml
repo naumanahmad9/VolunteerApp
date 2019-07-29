@@ -9,7 +9,10 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -124,6 +127,18 @@
                             android:text="1000"
                             android:textSize="22sp" />
 
+                        <TextView
+                            android:id="@+id/textview_rupees"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/event_detail_date"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="12dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_toRightOf="@id/event_detail_stipend"
+                            android:text="Rs."
+                            android:textSize="22sp" />
+
                         <ImageView
                             android:id="@+id/category_icon"
                             android:layout_width="45dp"
@@ -139,7 +154,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@id/event_detail_stipend"
                             android:layout_marginStart="12dp"
-                            android:layout_marginTop="12dp"
+                            android:layout_marginTop="14dp"
                             android:layout_toRightOf="@id/location_icon"
                             android:text="Education"
                             android:textSize="22sp" />
@@ -163,32 +178,52 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textview1"
                     android:layout_marginStart="25dp"
+                    android:layout_marginEnd="25dp"
                     android:layout_marginBottom="18dp"
                     android:text="Karachi Literature Festival is an annual international literary festival held in Karachi, Pakistan. It is the first festival of its kind in the country. "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textview6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/event_detail_description"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginBottom="18dp"
+                    android:text="Event by: "
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/event_detail_org"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/event_detail_description"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginBottom="18dp"
+                    android:layout_toRightOf="@id/textview6"
+                    android:text="Oxford University Press, Karachi"
                     android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textview2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/event_detail_description"
+                    android:layout_below="@id/textview6"
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="18dp"
                     android:text="Medium of Language: "
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/event_detail_language"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/textview2"
-                    android:layout_below="@id/event_detail_description"
+                    android:layout_below="@id/textview6"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="18dp"
+                    android:layout_toRightOf="@id/textview2"
                     android:text="Urdu and English"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textview3"
@@ -198,20 +233,18 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="18dp"
                     android:text="Dress Code: "
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/event_detail_dress"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/textview3"
                     android:layout_below="@id/textview2"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="18dp"
+                    android:layout_toRightOf="@id/textview3"
                     android:text="Semi Formal"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/textview4"
@@ -221,30 +254,28 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginBottom="18dp"
                     android:text="Refreshments: "
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/event_detail_refreshments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/textview4"
                     android:layout_below="@id/textview3"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="15dp"
+                    android:layout_toRightOf="@id/textview4"
                     android:text="Snacks and drinks"
-                    android:textSize="18sp"
-                    />
+                    android:textSize="18sp" />
 
                 <RatingBar
                     android:id="@+id/event_detail_ratingbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textview4"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:layout_centerHorizontal="true"
                     android:progressTint="@color/colorPrimary" />
 
                 <TextView
@@ -252,20 +283,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/event_detail_ratingbar"
-                    android:text="Comments"
-                    android:textSize="22sp"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"
-                    />
+                    android:text="Comments"
+                    android:textSize="22sp" />
+
                 <ListView
                     android:id="@+id/event_detail_comments_lv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textview5"
                     android:layout_marginStart="25dp"
-                    android:layout_marginBottom="50dp"
-                    />
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="50dp" />
 
             </RelativeLayout>
         </ScrollView>
