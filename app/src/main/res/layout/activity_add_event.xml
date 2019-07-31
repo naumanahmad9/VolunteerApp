@@ -11,17 +11,21 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="26dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="32dp"
@@ -36,12 +40,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="Add event name"/>
+                android:hint="Add event name"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView8"
-                android:layout_width="120dp"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -56,13 +60,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="textMultiLine"
                 android:hint="Describe the event"
-                />
+                android:inputType="textMultiLine" />
 
             <TextView
                 android:id="@+id/textView11"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -77,12 +80,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="date"
-                android:hint="Day/Month" />
+                android:hint="Day/Month"
+                android:inputType="date" />
 
             <TextView
                 android:id="@+id/textView13"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -97,12 +100,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="time"
-                android:hint="15:00" />
+                android:hint="15:00"
+                android:inputType="time" />
 
             <TextView
                 android:id="@+id/textView15"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -117,8 +120,8 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="e.g. Karachi, Pakistan"/>
+                android:hint="e.g. Karachi, Pakistan"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -137,18 +140,17 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="e.g. Education"/>
+                android:hint="e.g. Education"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView17"
-                android:layout_width="wrap_content"
+                android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="297dp"
-                android:text="Event Stipend"
-                />
+                android:text="Event Stipend" />
 
             <EditText
                 android:id="@+id/et_event_stipend"
@@ -158,12 +160,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="e.g. 1000"/>
+                android:hint="e.g. 1000"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView18"
-                android:layout_width="145dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -178,8 +180,8 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="e.g. Snacks and Drinks"/>
+                android:hint="e.g. Snacks and Drinks"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView19"
@@ -198,13 +200,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
                 android:hint="e.g. formal"
-                />
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView21"
-                android:layout_width="175dp"
+                android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -219,12 +220,12 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="19dp"
                 android:ems="10"
-                android:inputType="text"
-                android:hint="e.g. English"/>
+                android:hint="e.g. English"
+                android:inputType="text" />
 
             <TextView
                 android:id="@+id/textView20"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
                 android:layout_marginTop="12dp"
@@ -244,9 +245,8 @@
                 android:id="@+id/btn_event_add"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="284dp"
+                android:layout_gravity="end"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="24dp"
                 android:layout_marginBottom="28dp"
                 android:background="@drawable/button_bg"
                 android:text="Submit"
