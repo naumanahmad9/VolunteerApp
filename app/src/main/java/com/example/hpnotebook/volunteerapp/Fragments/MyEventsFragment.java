@@ -38,6 +38,7 @@ public class MyEventsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        
         View view = inflater.inflate(R.layout.fragment_new_events, container, false);
 
         lv_new_events = (ListView) view.findViewById(R.id.lv_new_events);

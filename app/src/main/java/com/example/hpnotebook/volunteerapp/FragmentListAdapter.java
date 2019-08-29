@@ -26,7 +26,6 @@ public class FragmentListAdapter extends ArrayAdapter<String> {
         this.images = images;
     }
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -46,7 +45,6 @@ public class FragmentListAdapter extends ArrayAdapter<String> {
         event_time.setText(times[position]);
         event_location.setText(locations[position]);
         event_image.setImageResource(images[position]);
-
 
         return convertView;
     }
