@@ -37,21 +37,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation 'com.google.firebase:firebase-storage:16.1.0'
-    implementation 'com.google.firebase:firebase-messaging:17.6.0'
-
-    // FirebaseUI for Firebase Realtime Database
-    implementation 'com.firebaseui:firebase-ui-database:5.0.0'
-
-    // FirebaseUI for Cloud Firestore
-    implementation 'com.firebaseui:firebase-ui-firestore:5.0.0'
-
-    // FirebaseUI for Firebase Auth
-    implementation 'com.firebaseui:firebase-ui-auth:5.0.0'
-
-    // FirebaseUI for Cloud Storage
-    implementation 'com.firebaseui:firebase-ui-storage:5.0.0'
 
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
 
 }
+apply plugin: 'com.google.gms.google-services'

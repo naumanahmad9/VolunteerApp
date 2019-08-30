@@ -2,33 +2,20 @@ package com.example.hpnotebook.volunteerapp.ModelClasses;
 
 public class User {
 
-    private String name, uid, email, pass, imageURL, status;
+    private String name, uid, email, contact, gender, type, pass, imageURL;
 
-    public User(String name, String uid, String email, String pass) {
+    public User(String name, String uid, String email, String pass, String contact, String gender, String type, String imageURL) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.pass = pass;
+        this.contact = contact;
+        this.gender = gender;
+        this.type = type;
+        this.imageURL = imageURL;
     }
 
     public User() {
-    }
-
-    public User(String name, String uid, String email, String pass, String imageURL, String status) {
-        this.name = name;
-        this.uid = uid;
-        this.email = email;
-        this.pass = pass;
-        this.imageURL = imageURL;
-        this.status = status;
-    }
-
-    public User(String name, String uid, String email, String pass, String imageURL) {
-        this.name = name;
-        this.uid = uid;
-        this.email = email;
-        this.pass = pass;
-        this.imageURL = imageURL;
     }
 
     public String getName() {
@@ -71,11 +58,27 @@ public class User {
         this.imageURL = imageURL;
     }
 
-    public String getStatus() {
-        return status;
+    public String getContact() {
+        return contact;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

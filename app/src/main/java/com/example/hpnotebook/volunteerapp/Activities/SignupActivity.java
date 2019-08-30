@@ -23,6 +23,7 @@ import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -33,10 +34,10 @@ import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText signup_contact, signup_name, signup_password;
+    EditText signup_contact, signup_name, signup_email, signup_password;
     Spinner signup_gender, signup_type;
     Button signup_btn;
-    FirebaseAuth auth;
+    private FirebaseAuth auth;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference userRef;
     FirebaseUser user;
@@ -56,6 +57,11 @@ public class SignupActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         init();
+        // FirebaseApp.initializeApp(this);
+        auth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        userRef = firebaseDatabase.getReference("users");
+
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait...");
 
@@ -64,8 +70,11 @@ public class SignupActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String name = signup_name.getText().toString();
-                String contact = signup_contact.getText().toString();
+                String email = signup_email.getText().toString();
                 String password = signup_password.getText().toString();
+                String contact = signup_contact.getText().toString();
+                String gender = signup_gender.getSelectedItem().toString();
+                String type = signup_type.getSelectedItem().toString();
                 String imageUrl = "default";
 
                 if (name.isEmpty()) {
@@ -84,14 +93,14 @@ public class SignupActivity extends AppCompatActivity {
                     fieldCheck = true;
                 }
                 if (!fieldCheck) {
-                    authUser(name, contact, password, imageUrl);
+                    authUser(name, email, password, contact, gender, type, imageUrl);
                 }
 
             }
         });
     }
 
-    private void authUser(final String name, final String email, final String pass, final String imageURL) {
+    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String imageUrl) {
 
         progressDialog.show();
 
@@ -103,18 +112,18 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    signupUser(name, email, pass, user.getUid(), imageURL);
+                    signupUser(name,  Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, imageUrl);
 
                 } else {
-                    Toast.makeText(SignupActivity.this, task.getException().toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
 
-    private void signupUser(String name, String email, String pass, String uid, String imageURL) {
+    private void signupUser(String name,  String uid, String email, String pass, String contact, String gender, String type, String imageUrl) {
 
-        User user = new User(name, uid, email, pass, imageURL);
+        User user = new User(name, uid, email, pass, contact, gender, type, imageUrl);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, DashboardActivity.class));
     }
@@ -124,10 +133,9 @@ public class SignupActivity extends AppCompatActivity {
         signup_password = findViewById(R.id.et_password);
         signup_name = findViewById(R.id.et_name);
         signup_gender = findViewById(R.id.spinner_gender);
-        signup_type = findViewById(R.id.spinner_gender);
-        signup_btn = findViewById(R.id.spinner_acc_type);
-        auth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        userRef = firebaseDatabase.getReference("users");
+        signup_type = findViewById(R.id.spinner_acc_type);
+        signup_btn = findViewById(R.id.signup_btn);
+        signup_email = findViewById(R.id.et_email);
+
     }
 }
