@@ -11,18 +11,19 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="296dp"
-        android:text="Contact no."
+        android:text="Email"
         android:textColor="#000"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.376"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/login_contact"
+        android:id="@+id/login_email"
         android:layout_width="334dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
@@ -35,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        android:drawableEnd="@drawable/ic_phone_black"
+        android:drawableEnd="@drawable/ic_email_black_24dp"
         />
 
     <TextView
@@ -51,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@+id/login_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_contact" />
+        app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
     <EditText
         android:id="@+id/login_password"
