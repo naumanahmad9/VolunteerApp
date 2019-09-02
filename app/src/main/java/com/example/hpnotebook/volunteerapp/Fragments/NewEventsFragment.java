@@ -42,6 +42,7 @@ public class NewEventsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_new_events, container, false);
 
+        /*
         lv_new_events = (ListView) view.findViewById(R.id.lv_new_events);
 
         FragmentListAdapter fragmentListAdapter = new FragmentListAdapter(getActivity(), events, dates, times, locations, images);
@@ -61,6 +62,8 @@ public class NewEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddEventActivity.class));
             }
         });
+        */
+
         return view;
     }
 
