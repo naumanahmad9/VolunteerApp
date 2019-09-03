@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
@@ -76,6 +78,7 @@ public class SignupActivity extends AppCompatActivity {
                 String gender = signup_gender.getSelectedItem().toString();
                 String type = signup_type.getSelectedItem().toString();
                 String imageUrl = "default";
+                ArrayList<Event> userEvents = new ArrayList<>();
 
                 if (name.isEmpty()) {
                     signup_name.setError("This field is empty");
@@ -93,14 +96,14 @@ public class SignupActivity extends AppCompatActivity {
                     fieldCheck = true;
                 }
                 if (!fieldCheck) {
-                    authUser(name, email, password, contact, gender, type, imageUrl);
+                    authUser(name, email, password, contact, gender, type, imageUrl, userEvents);
                 }
 
             }
         });
     }
 
-    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String imageUrl) {
+    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String imageUrl, final ArrayList<Event> userEvents) {
 
         progressDialog.show();
 
@@ -112,7 +115,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    signupUser(name,  Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, imageUrl);
+                    signupUser(name,  Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, imageUrl, userEvents);
 
                 } else {
                     Toast.makeText(SignupActivity.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
@@ -121,9 +124,9 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signupUser(String name,  String uid, String email, String pass, String contact, String gender, String type, String imageUrl) {
+    private void signupUser(String name,  String uid, String email, String pass, String contact, String gender, String type, String imageUrl, ArrayList<Event> userEvents) {
 
-        User user = new User(name, uid, email, pass, contact, gender, type, imageUrl);
+        User user = new User(name, uid, email, pass, contact, gender, type, imageUrl, userEvents);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, DashboardActivity.class));
     }

@@ -30,9 +30,8 @@ public class MyEventsFragment extends Fragment {
     String[] times = {"5 PM", "8 AM"};
     String[] locations = {"Karachi", "Lahore"};
     int[] images = {R.drawable.karachi_volunteer_1, R.drawable.lahore_volunteer_1};
-    ImageView add_new_event;
     */
-
+    ImageView add_new_event;
 
     public MyEventsFragment() {
         // Required empty public constructor
@@ -58,6 +57,7 @@ public class MyEventsFragment extends Fragment {
             }
         });
 
+        */
         add_new_event = view.findViewById(R.id.add_new_event);
 
         add_new_event.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,6 @@ public class MyEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddEventActivity.class));
             }
         });
-        */
 
         return view;
     }

@@ -1,10 +1,14 @@
 package com.example.hpnotebook.volunteerapp.ModelClasses;
 
+import java.util.ArrayList;
+
 public class User {
 
     private String name, uid, email, contact, gender, type, pass, imageURL;
+    private ArrayList<Event> userEvents;
 
-    public User(String name, String uid, String email, String pass, String contact, String gender, String type, String imageURL) {
+    public User(String name, String uid, String email, String pass, String contact, String gender,
+                String type, String imageURL, ArrayList<Event> userEvents) {
         this.name = name;
         this.uid = uid;
         this.email = email;
@@ -13,6 +17,7 @@ public class User {
         this.gender = gender;
         this.type = type;
         this.imageURL = imageURL;
+        this.userEvents = userEvents;
     }
 
     public User() {
@@ -80,5 +85,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public ArrayList<Event> getUserEvents() {
+        return userEvents;
+    }
+
+    public void setUserEvents(ArrayList<Event> userEvents) {
+        this.userEvents = userEvents;
     }
 }
