@@ -22,7 +22,7 @@ import com.example.hpnotebook.volunteerapp.R;
  */
 public class AchievedEventsFragment extends Fragment {
 
-
+    /*
     ListView lv_new_events;
     String[] events = { "Karachi Literature Festival"};
     String[] dates = {"10 October"};
@@ -30,6 +30,7 @@ public class AchievedEventsFragment extends Fragment {
     String[] locations = {"Karachi"};
     int[] images = {R.drawable.karachi_volunteer_1};
     ImageView add_new_event;
+    */
 
     public AchievedEventsFragment() {
         // Required empty public constructor
@@ -42,6 +43,7 @@ public class AchievedEventsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_new_events, container, false);
 
+        /*
         lv_new_events = (ListView) view.findViewById(R.id.lv_new_events);
 
         FragmentListAdapter fragmentListAdapter = new FragmentListAdapter(getActivity(), events, dates, times, locations, images);
@@ -61,6 +63,8 @@ public class AchievedEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddEventActivity.class));
             }
         });
+        */
+
 
         return view;
     }

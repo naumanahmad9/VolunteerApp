@@ -3,6 +3,7 @@ package com.example.hpnotebook.volunteerapp.Fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import com.example.hpnotebook.volunteerapp.R;
  */
 public class MyEventsFragment extends Fragment {
 
+    /*
     ListView lv_new_events;
     String[] events = { "Karachi Literature Festival", "World Wide Fund"};
     String[] dates = {"10 October", "1 December"};
@@ -29,18 +31,21 @@ public class MyEventsFragment extends Fragment {
     String[] locations = {"Karachi", "Lahore"};
     int[] images = {R.drawable.karachi_volunteer_1, R.drawable.lahore_volunteer_1};
     ImageView add_new_event;
+    */
+
 
     public MyEventsFragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_new_events, container, false);
 
+        /*
         lv_new_events = (ListView) view.findViewById(R.id.lv_new_events);
 
         FragmentListAdapter fragmentListAdapter = new FragmentListAdapter(getActivity(), events, dates, times, locations, images);
@@ -61,6 +66,7 @@ public class MyEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddEventActivity.class));
             }
         });
+        */
 
         return view;
     }
