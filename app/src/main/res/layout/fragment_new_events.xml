@@ -28,6 +28,7 @@
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:contentDescription="add event"
+            android:visibility="gone"
             />
 
 </RelativeLayout>

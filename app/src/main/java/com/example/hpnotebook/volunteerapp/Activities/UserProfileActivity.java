@@ -87,6 +87,17 @@ public class UserProfileActivity extends AppCompatActivity {
                 openImage();
             }
         });
+
+        profile_signout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                auth.signOut();
+                startActivity(new Intent(UserProfileActivity.this, LoginActivity.class));
+                finish();
+            }
+        });
+
     }
 
     @Override

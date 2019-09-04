@@ -19,14 +19,17 @@ import com.example.hpnotebook.volunteerapp.Activities.AddEventActivity;
 import com.example.hpnotebook.volunteerapp.Activities.EventDetailActivity;
 import com.example.hpnotebook.volunteerapp.FragmentListAdapter;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
+import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.NewEventsListAdapter;
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.core.EventTarget;
 
 import java.util.ArrayList;
@@ -46,15 +49,15 @@ public class NewEventsFragment extends Fragment {
     String[] locations = {"Islamabad", "Karachi", "Karachi", "Lahore", "Islamabad"};
     int[] images = {R.drawable.treeplantation, R.drawable.karachi_volunteer_1,
             R.drawable.karachi_volunteer_2, R.drawable.lahore_volunteer_1, R.drawable.isl_volunteer_1};
+            */
     ImageView add_new_event;
-    */
-
     RecyclerView rv_newEvents;
     ArrayList<Event> events;
     NewEventsListAdapter adapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventListingRef;
+    DatabaseReference eventListingRef, userRef;
+    FirebaseUser user;
 
     public NewEventsFragment() {
         // Required empty public constructor
@@ -79,6 +82,7 @@ public class NewEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), EventDetailActivity.class));
             }
         });
+        */
 
         add_new_event = view.findViewById(R.id.add_new_event);
         add_new_event.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +91,7 @@ public class NewEventsFragment extends Fragment {
                 startActivity(new Intent(getActivity(), AddEventActivity.class));
             }
         });
-        */
+
 
         rv_newEvents = view.findViewById(R.id.rv_newEvents);
         events = new ArrayList<>();
@@ -99,6 +103,8 @@ public class NewEventsFragment extends Fragment {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         eventListingRef = database.getReference("events");
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userRef = database.getReference("users").child(user.getUid());
 
         eventListingRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -106,7 +112,7 @@ public class NewEventsFragment extends Fragment {
 
                 Event event = dataSnapshot.getValue(Event.class);
 
-                if(Objects.requireNonNull(event).getEvent_id() != null) {
+                if (Objects.requireNonNull(event).getEvent_id() != null) {
                     events.add(event);
                     adapter.notifyDataSetChanged();
                 }
@@ -125,6 +131,23 @@ public class NewEventsFragment extends Fragment {
             @Override
             public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        userRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+                String userType = user.getType();
+
+                if (userType.equals("Organization")) {
+                    add_new_event.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override

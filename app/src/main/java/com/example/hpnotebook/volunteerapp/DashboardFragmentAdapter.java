@@ -31,9 +31,9 @@ public class DashboardFragmentAdapter extends FragmentStatePagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "My Events";
-            case 1:
                 return "New Events";
+            case 1:
+                return "My Events";
             case 2:
                 return "Achieved";
             default:

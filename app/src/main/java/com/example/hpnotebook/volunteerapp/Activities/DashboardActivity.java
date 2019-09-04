@@ -33,8 +33,8 @@ public class DashboardActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
 
         init();
-        list.add(new MyEventsFragment());
         list.add(new NewEventsFragment());
+        list.add(new MyEventsFragment());
         list.add(new AchievedEventsFragment());
 
         vp.setAdapter(adapter);
