@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String name, uid, email, contact, gender, type, pass, imageURL;
+    private String name, uid, email, contact, gender, type, pass, description, imageURL;
     private ArrayList<Event> userEvents;
 
     public User(String name, String uid, String email, String pass, String contact, String gender,
-                String type, String imageURL, ArrayList<Event> userEvents) {
+                String type, String description, String imageURL, ArrayList<Event> userEvents) {
         this.name = name;
         this.uid = uid;
         this.email = email;
@@ -16,6 +16,7 @@ public class User {
         this.contact = contact;
         this.gender = gender;
         this.type = type;
+        this.description = description;
         this.imageURL = imageURL;
         this.userEvents = userEvents;
     }
@@ -85,6 +86,14 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public ArrayList<Event> getUserEvents() {

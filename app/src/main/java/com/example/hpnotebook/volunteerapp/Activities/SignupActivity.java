@@ -36,7 +36,7 @@ import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText signup_contact, signup_name, signup_email, signup_password;
+    EditText signup_contact, signup_name, signup_email, signup_password, et_description;
     Spinner signup_gender, signup_type;
     Button signup_btn;
     private FirebaseAuth auth;
@@ -77,6 +77,7 @@ public class SignupActivity extends AppCompatActivity {
                 String contact = signup_contact.getText().toString();
                 String gender = signup_gender.getSelectedItem().toString();
                 String type = signup_type.getSelectedItem().toString();
+                String description = et_description.getText().toString();
                 String imageUrl = "default";
                 ArrayList<Event> userEvents = new ArrayList<>();
 
@@ -96,14 +97,14 @@ public class SignupActivity extends AppCompatActivity {
                     fieldCheck = true;
                 }
                 if (!fieldCheck) {
-                    authUser(name, email, password, contact, gender, type, imageUrl, userEvents);
+                    authUser(name, email, password, contact, gender, type, description,imageUrl, userEvents);
                 }
 
             }
         });
     }
 
-    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String imageUrl, final ArrayList<Event> userEvents) {
+    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String description, final String imageUrl, final ArrayList<Event> userEvents) {
 
         progressDialog.show();
 
@@ -115,7 +116,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    signupUser(name,  Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, imageUrl, userEvents);
+                    signupUser(name, Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, description, imageUrl, userEvents);
 
                 } else {
                     Toast.makeText(SignupActivity.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
@@ -124,9 +125,9 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signupUser(String name,  String uid, String email, String pass, String contact, String gender, String type, String imageUrl, ArrayList<Event> userEvents) {
+    private void signupUser(String name, String uid, String email, String pass, String contact, String gender, String type, String description, String imageUrl, ArrayList<Event> userEvents) {
 
-        User user = new User(name, uid, email, pass, contact, gender, type, imageUrl, userEvents);
+        User user = new User(name, uid, email, pass, contact, gender, type, description, imageUrl, userEvents);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(this, DashboardActivity.class));
     }
@@ -139,6 +140,6 @@ public class SignupActivity extends AppCompatActivity {
         signup_type = findViewById(R.id.spinner_acc_type);
         signup_btn = findViewById(R.id.signup_btn);
         signup_email = findViewById(R.id.et_email);
-
+        et_description = findViewById(R.id.et_description);
     }
 }
