@@ -1,6 +1,5 @@
 package com.example.hpnotebook.volunteerapp.Fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
