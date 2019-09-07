@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.SocialSigninActivity"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome To Social Login App"
+        android:textColor="#000"
+        android:gravity="center"
+        android:textStyle="italic|bold"
+        android:fontFamily="casual"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lets get started by"
+        android:textColor="#000"
+        android:gravity="center"
+        android:textStyle="italic|bold"
+        android:fontFamily="casual"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/log_in_google"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#FFFFFF"
+        android:textStyle="bold"
+        android:text="@string/common_signin_button_text_long"
+        android:drawableLeft="@drawable/google_icon"
+
+        android:scaleType="fitXY"
+        android:textColor="#747474"
+        android:textAllCaps="false"
+        android:textSize="15sp"
+        android:padding="10dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="or"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:textStyle="italic|bold"
+        android:fontFamily="casual"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+    <Button
+        android:id="@+id/log_in_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#3B5998"
+        android:textStyle="bold"
+        android:drawableLeft="@drawable/facebook_icon"
+        android:scaleType="fitXY"
+        android:textAllCaps="false"
+        android:padding="10dp"
+        android:text="Log in with Facebook"
+        android:textSize="15sp"
+        android:textColor="#ffffff"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+
+</LinearLayout>

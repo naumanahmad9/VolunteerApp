@@ -25,7 +25,8 @@
         <activity android:name=".Activities.DashboardActivity" />
         <activity android:name=".Activities.AddEventActivity" />
         <activity android:name=".Activities.UserProfileActivity" />
-        <activity android:name=".Activities.PermissionActivity"></activity>
+        <activity android:name=".Activities.PermissionActivity" />
+        <activity android:name=".Activities.SocialSigninActivity"></activity>
     </application>
 
 </manifest>
