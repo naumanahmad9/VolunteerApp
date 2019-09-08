@@ -4,16 +4,17 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String name, uid, email, contact, gender, type, pass, description, imageURL;
+    private String name, uid, email, contact, location, gender, type, pass, description, imageURL;
     private ArrayList<Event> userEvents;
 
-    public User(String name, String uid, String email, String pass, String contact, String gender,
+    public User(String name, String uid, String email, String pass, String contact, String location, String gender,
                 String type, String description, String imageURL, ArrayList<Event> userEvents) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.pass = pass;
         this.contact = contact;
+        this.location = location;
         this.gender = gender;
         this.type = type;
         this.description = description;
@@ -32,6 +33,13 @@ public class User {
         this.description = description;
         this.imageURL = imageURL;
         this.userEvents = userEvents;
+    }
+
+    public User(String name, String uid, String email, String type) {
+        this.name = name;
+        this.uid = uid;
+        this.email = email;
+        this.type = type;
     }
 
     public User() {
@@ -83,6 +91,14 @@ public class User {
 
     public void setContact(String contact) {
         this.contact = contact;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getGender() {

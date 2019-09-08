@@ -9,6 +9,9 @@ import android.net.NetworkCapabilities;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +22,14 @@ import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.hpnotebook.volunteerapp.DashboardFragmentAdapter;
+import com.example.hpnotebook.volunteerapp.Fragments.AchievedEventsFragment;
+import com.example.hpnotebook.volunteerapp.Fragments.OrgSignupFragment;
+import com.example.hpnotebook.volunteerapp.Fragments.VolunteerSignupFragment;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
+import com.example.hpnotebook.volunteerapp.SignupFragmentAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -36,15 +44,10 @@ import java.util.Objects;
 
 public class SignupActivity extends AppCompatActivity {
 
-    EditText signup_contact, signup_name, signup_email, signup_password, et_description;
-    Spinner signup_gender, signup_type;
-    Button signup_btn;
-    private FirebaseAuth auth;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference userRef;
-    FirebaseUser user;
-    ProgressDialog progressDialog;
-    private boolean fieldCheck;
+    ViewPager vp;
+    TabLayout tl;
+    ArrayList<Fragment> list;
+    SignupFragmentAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,91 +58,21 @@ public class SignupActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        init();;
 
-        init();
+        list.add(new OrgSignupFragment());
+        list.add(new VolunteerSignupFragment());
 
-        auth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        userRef = firebaseDatabase.getReference("users");
+        vp.setAdapter(adapter);
+        tl.setupWithViewPager(vp);
 
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait...");
-
-        signup_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                String name = signup_name.getText().toString();
-                String email = signup_email.getText().toString();
-                String password = signup_password.getText().toString();
-                String contact = signup_contact.getText().toString();
-                String gender = signup_gender.getSelectedItem().toString();
-                String type = signup_type.getSelectedItem().toString();
-                String description = et_description.getText().toString();
-                String imageUrl = "default";
-                ArrayList<Event> userEvents = new ArrayList<>();
-
-                if (name.isEmpty()) {
-                    signup_name.setError("This field is empty");
-                    fieldCheck = true;
-                }
-                if (contact.isEmpty()) {
-                    signup_contact.setError("This field is empty");
-                    fieldCheck = true;
-                }
-                if (password.isEmpty()) {
-                    signup_password.setError("This field is empty");
-                    fieldCheck = true;
-                } else if (password.length() <= 6) {
-                    signup_password.setError("Password is too short");
-                    fieldCheck = true;
-                }
-                if (!fieldCheck) {
-                    authUser(name, email, password, contact, gender, type, description,imageUrl, userEvents);
-                }
-
-            }
-        });
-    }
-
-    private void authUser(final String name, final String email, final String pass, final String contact, final String gender, final String type, final String description, final String imageUrl, final ArrayList<Event> userEvents) {
-
-        progressDialog.show();
-
-        auth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-                progressDialog.dismiss();
-
-                if (task.isSuccessful()) {
-                    user = auth.getCurrentUser();
-                    signupUser(name, Objects.requireNonNull(user).getUid(), email, pass, contact, gender, type, description, imageUrl, userEvents);
-
-                } else {
-                    Toast.makeText(SignupActivity.this, Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
-    private void signupUser(String name, String uid, String email, String pass, String contact, String gender, String type, String description, String imageUrl, ArrayList<Event> userEvents) {
-
-        User user = new User(name, uid, email, pass, contact, gender, type, description, imageUrl, userEvents);
-        userRef.child(uid).setValue(user);
-        startActivity(new Intent(this, DashboardActivity.class));
     }
 
     private void init() {
-        signup_contact = findViewById(R.id.et_contact);
-        signup_password = findViewById(R.id.et_password);
-        signup_name = findViewById(R.id.et_name);
-        signup_gender = findViewById(R.id.spinner_gender);
-        signup_type = findViewById(R.id.spinner_acc_type);
-        signup_btn = findViewById(R.id.signup_btn);
-        signup_email = findViewById(R.id.et_email);
-        et_description = findViewById(R.id.et_description);
+        vp = findViewById(R.id.vp_signup);
+        tl =  findViewById(R.id.tl_signup);
+        list = new ArrayList<>();
+        adapter = new SignupFragmentAdapter(getSupportFragmentManager(), list);
     }
+
 }

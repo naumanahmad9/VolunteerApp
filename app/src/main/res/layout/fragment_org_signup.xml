@@ -81,20 +81,23 @@
             android:drawableEnd="@drawable/ic_key_black"
             />
 
-        <Spinner
-            android:id="@+id/spinner_gender"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
+        <EditText
+            android:id="@+id/et_location"
             android:layout_width="349dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="8dp"
-            android:entries="@array/gender_spinner_entries"
-            android:spinnerMode="dialog"
-            android:prompt="@string/gender_hint"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="31dp"
+            android:paddingStart="12dp"
+            android:hint="Location"
+            android:textSize="20sp"
+            android:textColorHint="#6b6a6a"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_password" />
+            app:layout_constraintTop_toBottomOf="@+id/et_password"
+            android:drawableEnd="@drawable/ic_location_on_black_24dp"
+            />
 
         <EditText
             android:id="@+id/et_description"
@@ -104,14 +107,14 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="31dp"
             android:paddingStart="12dp"
-            android:hint="Tell something about you"
+            android:hint="Tell something about the organization"
             android:textSize="20sp"
             android:textColorHint="#6b6a6a"
             android:inputType="textMultiLine"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_gender"
+            app:layout_constraintTop_toBottomOf="@+id/et_location"
             />
 
         <Button
@@ -130,5 +133,4 @@
             app:layout_constraintTop_toBottomOf="@+id/et_description" />
 
     </android.support.constraint.ConstraintLayout>
-
 </FrameLayout>

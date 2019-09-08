@@ -65,6 +65,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 profile_name.setText(user.getName());
+                profile_location.setText(user.getLocation());
                 profile_desc.setText(user.getDescription());
 
                 if (user.getImageURL().equals("default")){

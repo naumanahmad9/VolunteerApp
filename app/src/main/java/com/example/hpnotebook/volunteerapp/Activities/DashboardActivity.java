@@ -41,6 +41,7 @@ public class DashboardActivity extends AppCompatActivity {
         tl.setupWithViewPager(vp);
 
     }
+
     private void init() {
         vp = findViewById(R.id.vp_dashboard);
         tl =  findViewById(R.id.tl_dashboard);

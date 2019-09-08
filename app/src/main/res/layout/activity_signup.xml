@@ -7,137 +7,30 @@
     android:background="@drawable/signup_bg"
     tools:context=".Activities.SignupActivity">
 
-    <EditText
-        android:id="@+id/et_name"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="31dp"
-        android:paddingStart="12dp"
-        android:hint="Full Name"
-        android:textSize="20sp"
-        android:textColorHint="#6b6a6a"
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_signup"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        app:tabMaxWidth="0dp"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:drawableEnd="@drawable/ic_person_black_small"/>
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        android:paddingStart="12dp"
-        android:hint="Email address"
-        android:textSize="20sp"
-        android:textColorHint="#6b6a6a"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_name"
-        android:drawableEnd="@drawable/ic_email_black_24dp"/>
-
-    <EditText
-        android:id="@+id/et_contact"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        android:paddingStart="12dp"
-        android:hint="Contact Number"
-        android:textSize="20sp"
-        android:textColorHint="#6b6a6a"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email"
-        android:drawableEnd="@drawable/ic_phone_black"/>
-
-    <EditText
-        android:id="@+id/et_password"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        android:paddingStart="12dp"
-        android:hint="Password"
-        android:textSize="20sp"
-        android:textColorHint="#6b6a6a"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_contact"
-        android:drawableEnd="@drawable/ic_key_black"
+        app:tabBackground="@color/colorPrimary"
+        app:tabIndicatorColor="@android:color/black"
+        app:tabInlineLabel="true"
+        app:tabTextColor="@android:color/white"
+        app:tabSelectedTextColor="@android:color/black"
         />
 
-    <Spinner
-        android:id="@+id/spinner_gender"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="349dp"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_signup"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:entries="@array/gender_spinner_entries"
-        android:spinnerMode="dialog"
-        android:prompt="@string/gender_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
-
-    <Spinner
-        android:id="@+id/spinner_acc_type"
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:entries="@array/acc_type_spinner_entries"
-        android:spinnerMode="dialog"
-        android:prompt="@string/acc_type_hint"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_gender" />
-
-
-    <EditText
-        android:id="@+id/et_description"
-        android:layout_width="349dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="31dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="31dp"
-        android:paddingStart="12dp"
-        android:hint="Tell something about you"
-        android:textSize="20sp"
-        android:textColorHint="#6b6a6a"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_acc_type"
-        />
-
-    <Button
-        android:id="@+id/signup_btn"
-        android:layout_width="132dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="248dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="31dp"
-        android:background="@drawable/button_bg"
-        android:text="Sign Up"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_description" />
+        app:layout_constraintTop_toBottomOf="@+id/tl_signup" />
 
 </android.support.constraint.ConstraintLayout>
