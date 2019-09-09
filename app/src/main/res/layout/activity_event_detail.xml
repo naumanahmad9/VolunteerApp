@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -267,36 +266,63 @@
                     android:text="Snacks and drinks"
                     android:textSize="18sp" />
 
-                <RatingBar
-                    android:id="@+id/event_detail_ratingbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textview4"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginStart="25dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="15dp"
-                    android:progressTint="@color/colorPrimary" />
+                <View
+                    android:id="@+id/separator1"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/event_detail_refreshments"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#80CFCFCF" />
 
                 <TextView
-                    android:id="@+id/textview5"
+                    android:id="@+id/tv_comment_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/event_detail_ratingbar"
+                    android:layout_below="@id/separator1"
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"
-                    android:text="Comments"
-                    android:textSize="22sp" />
+                    android:text="5"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    />
 
-                <ListView
-                    android:id="@+id/event_detail_comments_lv"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/iv_comment"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_below="@id/separator1"
+                    android:layout_toEndOf="@id/tv_comment_count"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="15dp"
+                    android:src="@drawable/ic_message_black_24dp"/>
+
+                <TextView
+                    android:id="@+id/tv_view_comments"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/textview5"
-                    android:layout_marginStart="25dp"
+                    android:layout_below="@id/separator1"
+                    android:layout_toEndOf="@id/iv_comment"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="15dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="50dp" />
+                    android:text="View comments"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_add_comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="70dp"
+                    android:text="Add comment"
+                    android:textSize="18sp" />
 
             </RelativeLayout>
         </ScrollView>
