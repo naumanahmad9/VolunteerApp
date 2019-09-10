@@ -56,7 +56,7 @@ public class NewEventsListAdapter extends RecyclerView.Adapter<EventListViewHold
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString("eventId", event.getEvent_id());
+                bundle.putString("eventid", event.getEvent_id());
 
                 Intent mIntent = new Intent(mContext, EventDetailActivity.class);
                 mIntent.putExtras(bundle);

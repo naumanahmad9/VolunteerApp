@@ -101,7 +101,31 @@
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="12dp"
                             android:layout_toRightOf="@id/location_icon"
-                            android:text="10 October, 5:00 PM"
+                            android:text="10 October"
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/tv_comma"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/event_detail_location"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_toRightOf="@id/event_detail_date"
+                            android:text=", "
+                            android:textSize="22sp" />
+
+                        <TextView
+                            android:id="@+id/event_detail_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/event_detail_location"
+                            android:layout_marginStart="3dp"
+                            android:layout_marginTop="18dp"
+                            android:layout_marginBottom="12dp"
+                            android:layout_toRightOf="@id/tv_comma"
+                            android:text="5:00 PM"
                             android:textSize="22sp" />
 
                         <ImageView
@@ -313,7 +337,7 @@
                     android:textSize="18sp" />
 
                 <TextView
-                    android:id="@+id/tv_add_comments"
+                    android:id="@+id/tv_add_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator1"
