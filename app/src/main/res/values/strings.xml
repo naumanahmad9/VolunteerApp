@@ -2,8 +2,8 @@
 
     <string name="app_name">VolunteerApp</string>
 
-    <string name="facebook_application_id" translatable="false">1401931123311277</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb1401931123311277</string>
+    <string name="facebook_application_id" translatable="false">your fb key</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb your fb key</string>
 
     <string name="google_maps_api_key">your google api key</string>
 
