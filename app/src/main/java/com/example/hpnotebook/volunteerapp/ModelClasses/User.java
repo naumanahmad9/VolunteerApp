@@ -22,13 +22,14 @@ public class User {
         this.userEvents = userEvents;
     }
 
-    public User(String name, String uid, String email, String pass, String contact,
+    public User(String name, String uid, String email, String pass, String contact, String location,
                 String type, String description, String imageURL, ArrayList<Event> userEvents) {
         this.name = name;
         this.uid = uid;
         this.email = email;
         this.pass = pass;
         this.contact = contact;
+        this.location = location;
         this.type = type;
         this.description = description;
         this.imageURL = imageURL;
