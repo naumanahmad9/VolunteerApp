@@ -3,17 +3,21 @@ package com.example.hpnotebook.volunteerapp.Activities;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
+import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,7 +41,8 @@ public class EventDetailActivity extends AppCompatActivity {
             tv_add_comment;
 
     Event event;
-    String eventid, event_userId;
+    String eventid, event_userId, event_org;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +65,49 @@ public class EventDetailActivity extends AppCompatActivity {
                 event = dataSnapshot.getValue(Event.class);
 
                 Glide.with(getApplicationContext()).load(event.getEvent_image()).into(event_detail_image);
+
+                event_detail_title.setText(event.getEvent_title());
+                event_detail_location.setText(event.getEvent_location());
+                event_detail_date.setText(event.getEvent_date());
+                event_detail_time.setText(event.getEvent_time());
+                event_detail_stipend.setText(event.getEvent_stipend());
+                event_detail_category.setText(event.getEvent_category());
+                event_detail_language.setText(event.getEvent_language());
+                event_detail_dress.setText(event.getEvent_dresscode());
+                event_detail_refreshments.setText(event.getEvent_refreshments());
+
+
+                eventUserIdRef = database.getReference("users").child(event.getEvent_userId());
+
+                eventUserIdRef.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        user = dataSnapshot.getValue(User.class);
+                        event_org = user.getName();
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                event_detail_org.setText(event_org);
             }
 
             @Override
@@ -68,6 +116,23 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
+        tv_add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDetailActivity.this, CommentsActivity.class);
+                intent.putExtra("eventid", eventid);
+                startActivity(intent);
+            }
+        });
+
+        tv_add_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EventDetailActivity.this, CommentsActivity.class);
+                intent.putExtra("eventid", eventid);
+                startActivity(intent);
+            }
+        });
     }
 
     private void init() {
