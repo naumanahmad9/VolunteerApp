@@ -35,7 +35,7 @@ public class SearchEventsActivity extends AppCompatActivity {
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
         String[] items = {"Education", "Social Work", "Healthcare", "Technology", "Cooking",
-                            "Events", "Donation", "Marketing", "The Citizens Foundation",
+                            "Event Management", "Donation", "Marketing", "The Citizens Foundation",
                             "SOS Village", "Transportation"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,

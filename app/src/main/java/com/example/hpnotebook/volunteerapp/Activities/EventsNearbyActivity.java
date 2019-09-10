@@ -1,16 +1,23 @@
 package com.example.hpnotebook.volunteerapp.Activities;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.R;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
 
 import java.util.Objects;
 
 public class EventsNearbyActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,8 @@ public class EventsNearbyActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

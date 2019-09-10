@@ -67,8 +67,10 @@ public class CommentsActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
+
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
+
         commentList = new ArrayList<>();
         commentAdapter = new CommentAdapter(this, commentList, eventid);
         recyclerView.setAdapter(commentAdapter);
