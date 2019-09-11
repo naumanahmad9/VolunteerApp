@@ -100,11 +100,16 @@ public class EventsNearbyActivity extends AppCompatActivity implements OnMapRead
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        mSearchText = (AutoCompleteTextView) findViewById(R.id.input_search);
+        mGps = (ImageView) findViewById(R.id.ic_gps);
+        mInfo = (ImageView) findViewById(R.id.place_info);
+        mPlacePicker = (ImageView) findViewById(R.id.place_picker);
+
         getLocationPermission();
 
 
     }
-/*
+
     private void init(){
         Log.d(TAG, "init: initializing");
 
@@ -181,7 +186,7 @@ public class EventsNearbyActivity extends AppCompatActivity implements OnMapRead
 
         hideSoftKeyboard();
     }
-*/
+
     private void geoLocate(){
         Log.d(TAG, "geoLocate: geolocating");
 
