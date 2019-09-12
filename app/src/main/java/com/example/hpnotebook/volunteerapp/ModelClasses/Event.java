@@ -1,5 +1,7 @@
 package com.example.hpnotebook.volunteerapp.ModelClasses;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 public class Event {
@@ -8,12 +10,13 @@ public class Event {
             event_refreshments, event_dresscode, event_language, event_image;
     private int event__viewcount;
     private ArrayList<User> event_users;
+    private LatLng latlng;
 
     public Event(String event_id, String event_title, String event_userId,
                  String event_description, String event_date, String event_time,
                  String event_location, String event_category, String event_stipend,
                  String event_refreshments, String event_dresscode, String event_language,
-                 String event_image, ArrayList<User> event_users) {
+                 String event_image, LatLng latlng, ArrayList<User> event_users) {
 
         this.event_id = event_id;
         this.event_title = event_title;
@@ -28,6 +31,7 @@ public class Event {
         this.event_dresscode = event_dresscode;
         this.event_language = event_language;
         this.event_image = event_image;
+        this.latlng = latlng;
         this.event_users = event_users;
     }
 
@@ -43,7 +47,8 @@ public class Event {
     }
 
 
-    public Event() {}
+    public Event() {
+    }
 
     public String getEvent_id() {
         return event_id;
@@ -155,6 +160,14 @@ public class Event {
 
     public void setEvent__viewcount(int event__viewcount) {
         this.event__viewcount = event__viewcount;
+    }
+
+    public LatLng getLatlng() {
+        return latlng;
+    }
+
+    public void setLatlng(LatLng latlng) {
+        this.latlng = latlng;
     }
 
     public ArrayList<User> getEvent_users() {

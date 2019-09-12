@@ -47,14 +47,16 @@ public class AddEventActivity extends AppCompatActivity {
             et_event_language;
     ImageView event_image;
     Button btn_event_add;
+    Uri imageUri;
     FirebaseAuth auth;
     FirebaseUser user;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference ref;
     FirebaseStorage storage;
     StorageReference imageRef;
-    String homeId;
     String key;
+    String homeId;
+    Bitmap bitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,9 @@ public class AddEventActivity extends AppCompatActivity {
 
                 // key = homeId;
                 // if (homeId == null) {
-                    key = ref.push().getKey();
+
+                    //key = ref.push().getKey();
+
                 //}
 
                 String event_title = et_event_title.getText().toString();
@@ -89,11 +93,29 @@ public class AddEventActivity extends AppCompatActivity {
                 String event_refreshments = et_event_refreshments.getText().toString();
                 String event_dresscode = et_event_dresscode.getText().toString();
                 String event_language = et_event_language.getText().toString();
-
-                ArrayList<User> event_users = new ArrayList<>();
+                //String event_img = event_image.getDrawable().toString();
+                //ArrayList<User> event_users = new ArrayList<>();
 
                 String event_userId = user.getUid();
 
+                Bundle bundle = new Bundle();
+                bundle.putString("event_title", event_title);
+                bundle.putString("event_description", event_description);
+                bundle.putString("event_date", event_date);
+                bundle.putString("event_time", event_time);
+                bundle.putString("event_location", event_location);
+                bundle.putString("event_category", event_category);
+                bundle.putString("event_stipend", event_stipend);
+                bundle.putString("event_refreshments", event_refreshments);
+                bundle.putString("event_dresscode", event_dresscode);
+                bundle.putString("event_language", event_language);
+                bundle.putString("event_image", imageUri.toString());
+
+                Intent mIntent = new Intent(AddEventActivity.this, PickEventLocationActivity.class);
+                mIntent.putExtras(bundle);
+                startActivity(mIntent);
+
+                /*
                 imageRef = storage.getReference("event images/" + key);
 
                 addEvent(key, event_title,
@@ -101,11 +123,11 @@ public class AddEventActivity extends AppCompatActivity {
                         event_date, event_time, event_location, event_category,
                         event_stipend, event_refreshments, event_dresscode,
                         event_language, event_users);
-
+                */
             }
         });
     }
-
+/*
     private void addEvent(final String event_id, final String event_title, final String event_userId, final String event_description,
                           final String event_date, final String event_time,
                           final String event_location, final String event_category, final String event_stipend,
@@ -170,7 +192,7 @@ public class AddEventActivity extends AppCompatActivity {
         });
 
     }
-
+*/
     private void init() {
 
         et_event_title = findViewById(R.id.et_event_title);
@@ -207,7 +229,7 @@ public class AddEventActivity extends AppCompatActivity {
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
             if (data != null) {
-                Uri imageUri = data.getData();
+                 imageUri = data.getData();
                 event_image.setImageURI(imageUri);
             }
         }
