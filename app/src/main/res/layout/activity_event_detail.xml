@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -308,31 +309,30 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="15dp"
                     android:text="5"
-                    android:textStyle="bold"
                     android:textSize="20sp"
-                    />
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/iv_comment"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_below="@id/separator1"
-                    android:layout_toEndOf="@id/tv_comment_count"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="15dp"
-                    android:src="@drawable/ic_message_black_24dp"/>
+                    android:layout_toEndOf="@id/tv_comment_count"
+                    android:src="@drawable/ic_message_black_24dp" />
 
                 <TextView
                     android:id="@+id/tv_view_comments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator1"
-                    android:layout_toEndOf="@id/iv_comment"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="15dp"
                     android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@id/iv_comment"
                     android:text="View comments"
                     android:textSize="18sp" />
 
@@ -360,6 +360,17 @@
             android:text="Apply"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/button_view_applicants"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="View Applicants"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_info_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_place_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,9 +34,11 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="302d37" />
-                            <entry key="outputName" value="ic_info" />
+                            <entry key="height" value="48" />
+                            <entry key="outputName" value="ic_place_black_48dp" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\HP Notebook" />
+                            <entry key="width" value="48" />
                           </map>
                         </option>
                       </PersistentState>

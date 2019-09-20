@@ -37,7 +37,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
 
     private FirebaseUser firebaseUser;
 
-    public CommentAdapter(Context context, List<Comment> comments, String eventid){
+    public CommentAdapter(Context context, List<Comment> comments, String eventid) {
         mContext = context;
         mComment = comments;
         this.eventid = eventid;
@@ -51,13 +51,38 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CommentAdapter.ImageViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final CommentAdapter.ImageViewHolder holder, final int position) {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         final Comment comment = mComment.get(position);
 
         holder.comment.setText(comment.getComment());
-        getUserInfo(holder.image_profile, holder.username, comment.getPublisher());
+
+        //getUserInfo(holder.image_profile, holder.username, comment.getPublisher());
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
+                .child("users").child(comment.getPublisher());
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                User user = dataSnapshot.getValue(User.class);
+
+                if (user.getImageURL().equals("default")){
+                    holder.image_profile.setImageResource(R.drawable.ic_person_black_small);
+                }
+                else {
+                    Glide.with(mContext).load(user.getImageURL()).into(holder.image_profile);
+                }
+
+                holder.username.setText(user.getName());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         holder.username.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +124,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
                                             .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
+                                            if (task.isSuccessful()) {
                                                 Toast.makeText(mContext, "Deleted!", Toast.LENGTH_SHORT).show();
                                             }
                                         }
@@ -132,8 +157,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             comment = itemView.findViewById(R.id.comment);
         }
     }
-
-    private void getUserInfo(final ImageView imageView, final TextView username, String publisherid){
+    /*
+    private void getUserInfo(final ImageView imageView, final TextView username, String publisherid) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(publisherid);
 
@@ -141,7 +166,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(user.getImageURL()).into(imageView);
+
+
+                if (user.getImageURL().equals("default")){
+                    imageView.setImageResource(R.drawable.ic_person_black_small);
+                }
+                else {
+                    Glide.with(mContext).load(user.getImageURL()).into(imageView);
+                }
                 username.setText(user.getName());
             }
 
@@ -151,4 +183,5 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             }
         });
     }
+    */
 }

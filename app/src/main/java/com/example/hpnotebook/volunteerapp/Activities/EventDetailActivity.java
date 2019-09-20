@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
@@ -28,21 +30,22 @@ import java.util.Objects;
 
 public class EventDetailActivity extends AppCompatActivity {
 
-    boolean check = false;
+    boolean likeCheck = false;
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventRef, userRef, eventUserIdRef;
+    DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef;
 
     ImageView event_detail_image;
     TextView event_detail_title, event_detail_location, event_detail_date, event_detail_time,
             event_detail_stipend, event_detail_category, event_detail_org, event_detail_language,
-            event_detail_dress, event_detail_refreshments, tv_comment_count,tv_view_comments,
+            event_detail_dress, event_detail_refreshments, tv_comment_count, tv_view_comments,
             tv_add_comment;
-
+    Button button_apply, button_view_applicants;
     Event event;
     String eventid, event_userId, event_org;
     User user;
+    private boolean applyCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,11 +57,11 @@ public class EventDetailActivity extends AppCompatActivity {
         init();
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-            eventid = bundle.getString("eventid");
-        }
+        //if (bundle != null) {
+        eventid = bundle.getString("eventid");
+        //}
 
-        eventRef.addValueEventListener(new ValueEventListener() {
+        eventRef.child(eventid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -76,29 +79,14 @@ public class EventDetailActivity extends AppCompatActivity {
                 event_detail_dress.setText(event.getEvent_dresscode());
                 event_detail_refreshments.setText(event.getEvent_refreshments());
 
-
                 eventUserIdRef = database.getReference("users").child(event.getEvent_userId());
 
-                eventUserIdRef.addChildEventListener(new ChildEventListener() {
+                eventUserIdRef.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         user = dataSnapshot.getValue(User.class);
-                        event_org = user.getName();
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
+                        //event_org = user.getName();
+                        event_detail_org.setText(user.getName());
                     }
 
                     @Override
@@ -108,6 +96,11 @@ public class EventDetailActivity extends AppCompatActivity {
                 });
 
                 event_detail_org.setText(event_org);
+
+                if (event.getEvent_userId().equals(auth.getCurrentUser().getUid())) {
+                    button_apply.setVisibility(View.GONE);
+                    button_view_applicants.setVisibility(View.VISIBLE);
+                }
             }
 
             @Override
@@ -116,7 +109,19 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
-        tv_add_comment.setOnClickListener(new View.OnClickListener() {
+        eventCommentsRef.child(eventid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                tv_comment_count.setText(String.valueOf(dataSnapshot.getChildrenCount()));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        tv_view_comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(EventDetailActivity.this, CommentsActivity.class);
@@ -130,7 +135,29 @@ public class EventDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(EventDetailActivity.this, CommentsActivity.class);
                 intent.putExtra("eventid", eventid);
+                intent.putExtra("publisherid", auth.getCurrentUser().getUid());
                 startActivity(intent);
+            }
+        });
+
+        button_apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!applyCheck) {
+                    button_apply.setText("Apply");
+                    applyCheck = true;
+                    Toast.makeText(EventDetailActivity.this, "Application Submitted", Toast.LENGTH_SHORT).show();
+                } else {
+                    button_apply.setText("Applied. Tap to cancel.");
+                    applyCheck = false;
+                }
+            }
+        });
+
+        button_view_applicants.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EventDetailActivity.this, ViewApplicantsActivity.class));
             }
         });
     }
@@ -150,14 +177,14 @@ public class EventDetailActivity extends AppCompatActivity {
         tv_comment_count = findViewById(R.id.tv_comment_count);
         tv_view_comments = findViewById(R.id.tv_view_comments);
         tv_add_comment = findViewById(R.id.tv_add_comment);
+        button_apply = findViewById(R.id.button_apply);
+        button_view_applicants = findViewById(R.id.button_view_applicants);
 
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
-
-        database = FirebaseDatabase.getInstance();
-        eventRef = database.getReference("events").child(eventid);
+        eventRef = database.getReference("events");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
-
+        eventCommentsRef = FirebaseDatabase.getInstance().getReference().child("Comments");
     }
 
     @Override
@@ -172,14 +199,14 @@ public class EventDetailActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.fav:
 
-                if (check) {
+                if (likeCheck) {
                     item.setIcon(R.drawable.ic_favorite_border_black);
                     item.setTitle("add to fav");
-                    check = false;
+                    likeCheck = false;
                 } else {
                     item.setIcon(R.drawable.ic_favorite_black);
                     item.setTitle("fav event");
-                    check = true;
+                    likeCheck = true;
                 }
                 return true;
 

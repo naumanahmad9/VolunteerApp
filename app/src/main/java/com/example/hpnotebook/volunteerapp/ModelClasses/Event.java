@@ -7,16 +7,14 @@ import java.util.ArrayList;
 public class Event {
     private String event_id, event_title, event_userId, event_description,
             event_date, event_time, event_location, event_category, event_stipend,
-            event_refreshments, event_dresscode, event_language, event_image;
+            event_refreshments, event_dresscode, event_language, event_image, event_latlng, event_users;
     private int event__viewcount;
-    private ArrayList<User> event_users;
-    private LatLng latlng;
 
     public Event(String event_id, String event_title, String event_userId,
                  String event_description, String event_date, String event_time,
                  String event_location, String event_category, String event_stipend,
                  String event_refreshments, String event_dresscode, String event_language,
-                 String event_image, LatLng latlng, ArrayList<User> event_users) {
+                 String event_image, String event_latlng) {
 
         this.event_id = event_id;
         this.event_title = event_title;
@@ -31,8 +29,7 @@ public class Event {
         this.event_dresscode = event_dresscode;
         this.event_language = event_language;
         this.event_image = event_image;
-        this.latlng = latlng;
-        this.event_users = event_users;
+        this.event_latlng = event_latlng;
     }
 
     public Event(String event_id, String event_title, String event_date, String event_time,
@@ -162,19 +159,19 @@ public class Event {
         this.event__viewcount = event__viewcount;
     }
 
-    public LatLng getLatlng() {
-        return latlng;
+    public String getEvent_latlng() {
+        return event_latlng;
     }
 
-    public void setLatlng(LatLng latlng) {
-        this.latlng = latlng;
+    public void setEvent_latlng(String event_latlng) {
+        this.event_latlng = event_latlng;
     }
 
-    public ArrayList<User> getEvent_users() {
+    public String getEvent_users() {
         return event_users;
     }
 
-    public void setEvent_users(ArrayList<User> event_users) {
+    public void setEvent_users(String event_users) {
         this.event_users = event_users;
     }
 }

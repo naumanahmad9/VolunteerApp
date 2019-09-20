@@ -36,7 +36,7 @@ public class CommentsActivity extends AppCompatActivity {
     private List<Comment> commentList;
 
     EditText addcomment;
-    ImageView image_profile;
+    de.hdodenhof.circleimageview.CircleImageView image_profile;
     TextView post;
 
     String eventid;
@@ -50,7 +50,7 @@ public class CommentsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_comments);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Comments");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -92,7 +92,7 @@ public class CommentsActivity extends AppCompatActivity {
             }
         });
 
-        getImage();
+        //getImage();
         readComments();
     }
 
@@ -108,11 +108,11 @@ public class CommentsActivity extends AppCompatActivity {
         hashMap.put("commentid", commentid);
 
         reference.child(commentid).setValue(hashMap);
-        addNotification();
+        //addNotification();
         addcomment.setText("");
 
     }
-
+/*
     private void addNotification() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(publisherid);
 
@@ -124,7 +124,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         reference.push().setValue(hashMap);
     }
-
+*/
     private void getImage() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {

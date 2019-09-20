@@ -127,13 +127,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private void authUser(String email, String pass) {
 
-        progressDialog.show();
+        //progressDialog.show();
 
         auth.signInWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
