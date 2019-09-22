@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Event {
     private String event_id, event_title, event_userId, event_description,
             event_date, event_time, event_location, event_category, event_stipend,
-            event_refreshments, event_dresscode, event_language, event_image, event_latlng, event_users;
+            event_refreshments, event_dresscode, event_language, event_image, event_latlng, event_applicants;
     private int event__viewcount;
 
     public Event(String event_id, String event_title, String event_userId,
@@ -167,11 +167,11 @@ public class Event {
         this.event_latlng = event_latlng;
     }
 
-    public String getEvent_users() {
-        return event_users;
+    public String getEvent_applicants() {
+        return event_applicants;
     }
 
-    public void setEvent_users(String event_users) {
-        this.event_users = event_users;
+    public void setEvent_applicants(String event_applicants) {
+        this.event_applicants = event_applicants;
     }
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="3dp"
+    app:cardElevation="8dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/applicant_image"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="2dp"
+            android:src="@drawable/user_shape" />
+
+        <TextView
+            android:id="@+id/applicant_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_toRightOf="@id/applicant_image"
+            android:text="Applicant Name"
+            android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_below="@id/applicant_name"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/applicant_image"
+            android:src="@drawable/ic_email_black_24dp" />
+
+        <TextView
+            android:id="@+id/applicant_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/applicant_name"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/email_icon"
+            android:text="email@gmail.com"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_below="@id/email_icon"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/applicant_image"
+            android:src="@drawable/ic_phone_black" />
+
+        <TextView
+            android:id="@+id/applicant_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email_icon"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/phone_icon"
+            android:text="03331234567"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

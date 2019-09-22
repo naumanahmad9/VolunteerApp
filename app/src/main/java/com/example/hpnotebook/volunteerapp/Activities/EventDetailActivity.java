@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
+import com.example.hpnotebook.volunteerapp.ViewApplicantsAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -43,9 +44,10 @@ public class EventDetailActivity extends AppCompatActivity {
             tv_add_comment;
     Button button_apply, button_view_applicants;
     Event event;
-    String eventid, event_userId, event_org;
+    String eventid, event_org;
     User user;
-    private boolean applyCheck;
+    private boolean applyCheck = true;
+    User applicant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,10 +148,28 @@ public class EventDetailActivity extends AppCompatActivity {
                 if (!applyCheck) {
                     button_apply.setText("Apply");
                     applyCheck = true;
-                    Toast.makeText(EventDetailActivity.this, "Application Submitted", Toast.LENGTH_SHORT).show();
-                } else {
+
+                }
+                else {
                     button_apply.setText("Applied. Tap to cancel.");
+                    Toast.makeText(EventDetailActivity.this, "Application Submitted", Toast.LENGTH_SHORT).show();
                     applyCheck = false;
+
+                    userRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            applicant = dataSnapshot.getValue(User.class);
+
+                            database.getReference("applicants").child(eventid).child(applicant.getUid()).setValue(applicant);
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
                 }
             }
         });
@@ -157,7 +177,13 @@ public class EventDetailActivity extends AppCompatActivity {
         button_view_applicants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EventDetailActivity.this, ViewApplicantsActivity.class));
+
+                Intent mIntent = new Intent(EventDetailActivity.this, ViewApplicantsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventid", eventid);
+                mIntent.putExtras(bundle);
+
+                startActivity(mIntent);
             }
         });
     }

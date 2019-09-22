@@ -139,6 +139,7 @@ public class LoginActivity extends AppCompatActivity {
                     user = auth.getCurrentUser();
                     startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                    finish();
                 }
             }
         });
@@ -163,7 +164,6 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (!fieldCheck) {
             authUser(email, pass);
-            finish();
         }
     }
 
