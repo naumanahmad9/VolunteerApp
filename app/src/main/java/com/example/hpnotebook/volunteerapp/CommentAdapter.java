@@ -100,6 +100,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Yes",
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
+
                                     FirebaseDatabase.getInstance().getReference("Comments")
                                             .child(eventid).child(comment.getCommentid())
                                             .removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {

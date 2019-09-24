@@ -19,6 +19,8 @@ import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
 import com.example.hpnotebook.volunteerapp.ViewApplicantsAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -146,30 +148,51 @@ public class EventDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!applyCheck) {
-                    button_apply.setText("Apply");
-                    applyCheck = true;
-
-                }
-                else {
-                    button_apply.setText("Applied. Tap to cancel.");
-                    Toast.makeText(EventDetailActivity.this, "Application Submitted", Toast.LENGTH_SHORT).show();
-                    applyCheck = false;
 
                     userRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             applicant = dataSnapshot.getValue(User.class);
 
-                            database.getReference("applicants").child(eventid).child(applicant.getUid()).setValue(applicant);
+                            database.getReference("applicants").child(eventid)
+                                    .child(applicant.getUid()).removeValue()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            button_apply.setText("Apply");
+                                            Toast.makeText(EventDetailActivity.this, "Application Canceled", Toast.LENGTH_SHORT).show();
+                                            applyCheck = true;
+                                        }
+                                    });
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
 
+                }
+                else {
+                    userRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            applicant = dataSnapshot.getValue(User.class);
 
+                            database.getReference("applicants").child(eventid)
+                                    .child(applicant.getUid()).setValue(applicant)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            button_apply.setText("Applied. Tap to cancel.");
+                                            Toast.makeText(EventDetailActivity.this, "Application Submitted", Toast.LENGTH_SHORT).show();
+                                            applyCheck = false;
+                                        }
+                                    });
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        }
+                    });
                 }
             }
         });
