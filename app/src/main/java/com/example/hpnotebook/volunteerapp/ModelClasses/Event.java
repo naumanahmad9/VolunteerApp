@@ -8,7 +8,6 @@ public class Event {
     private String event_id, event_title, event_userId, event_description,
             event_date, event_time, event_location, event_category, event_stipend,
             event_refreshments, event_dresscode, event_language, event_image, event_latlng, event_applicants;
-    private int event__viewcount;
 
     public Event(String event_id, String event_title, String event_userId,
                  String event_description, String event_date, String event_time,
@@ -149,14 +148,6 @@ public class Event {
 
     public void setEvent_image(String event_image) {
         this.event_image = event_image;
-    }
-
-    public int getEvent__viewcount() {
-        return event__viewcount;
-    }
-
-    public void setEvent__viewcount(int event__viewcount) {
-        this.event__viewcount = event__viewcount;
     }
 
     public String getEvent_latlng() {

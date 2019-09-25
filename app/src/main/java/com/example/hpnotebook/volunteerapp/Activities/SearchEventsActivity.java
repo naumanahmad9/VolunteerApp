@@ -68,7 +68,7 @@ public class SearchEventsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(SearchEventsActivity.this, MapActivity.class));
+        startActivity(new Intent(SearchEventsActivity.this, NearbyEventsActivity.class));
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         return true;
     }

@@ -37,6 +37,8 @@ public class ViewApplicantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_applicants);
 
+        getSupportActionBar().setTitle("Applicants");
+
         Bundle bundle = getIntent().getExtras();
         eventid = bundle.getString("eventid");
 
