@@ -39,14 +39,14 @@ public class EventDetailActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef;
 
-    ImageView event_detail_image;
+    ImageView event_detail_image, iv_fav;
     TextView event_detail_title, event_detail_location, event_detail_date, event_detail_time,
             event_detail_stipend, event_detail_category, event_detail_org, event_detail_language,
-            event_detail_dress, event_detail_refreshments, tv_comment_count, tv_view_comments,
-            tv_add_comment;
+            event_detail_dress, event_detail_refreshments, tv_likesCount, tv_comment_count, tv_view_comments,
+            tv_add_comment, textview24, tv_achieved;
     Button button_apply, button_view_applicants;
     Event event;
-    String eventid, event_org;
+    String eventid, event_org, title, location, date, time, img;
     User user;
     private boolean applyCheck = true;
     User applicant;
@@ -71,12 +71,18 @@ public class EventDetailActivity extends AppCompatActivity {
 
                 event = dataSnapshot.getValue(Event.class);
 
-                Glide.with(getApplicationContext()).load(event.getEvent_image()).into(event_detail_image);
+                title = event.getEvent_title();
+                location = event.getEvent_location();
+                date = event.getEvent_date();
+                time = event.getEvent_time();
+                img = event.getEvent_image();
 
-                event_detail_title.setText(event.getEvent_title());
-                event_detail_location.setText(event.getEvent_location());
-                event_detail_date.setText(event.getEvent_date());
-                event_detail_time.setText(event.getEvent_time());
+                Glide.with(getApplicationContext()).load(img).into(event_detail_image);
+
+                event_detail_title.setText(title);
+                event_detail_location.setText(location);
+                event_detail_date.setText(date);
+                event_detail_time.setText(time);
                 event_detail_stipend.setText(event.getEvent_stipend());
                 event_detail_category.setText(event.getEvent_category());
                 event_detail_language.setText(event.getEvent_language());
@@ -110,6 +116,20 @@ public class EventDetailActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        iv_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (likeCheck) {
+                    iv_fav.setImageResource(R.drawable.ic_favorite_border_black);
+                    likeCheck = false;
+                }
+                else {
+                    iv_fav.setImageResource(R.drawable.ic_favorite_black);
+                    likeCheck = true;
+                }
             }
         });
 
@@ -171,8 +191,9 @@ public class EventDetailActivity extends AppCompatActivity {
                         }
                     });
 
-                }
-                else {
+                    userRef.child("userEvents").child(eventid).removeValue();
+
+                } else {
                     userRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -189,10 +210,21 @@ public class EventDetailActivity extends AppCompatActivity {
                                         }
                                     });
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
                     });
+
+                    Event mEvent = new Event();
+                    mEvent.setEvent_id(eventid);
+                    mEvent.setEvent_title(title);
+                    mEvent.setEvent_location(location);
+                    mEvent.setEvent_date(date);
+                    mEvent.setEvent_time(time);
+                    mEvent.setEvent_image(img);
+
+                    userRef.child("userEvents").child(eventid).setValue(mEvent);
                 }
             }
         });
@@ -209,6 +241,42 @@ public class EventDetailActivity extends AppCompatActivity {
                 startActivity(mIntent);
             }
         });
+
+        userRef.child("userEvents").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                if (dataSnapshot.hasChild(eventid)) {
+                    textview24.setVisibility(View.VISIBLE);
+                    textview24.setClickable(true);
+
+                    tv_achieved.setVisibility(View.VISIBLE);
+                    tv_achieved.setClickable(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        tv_achieved.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Event mEvent = new Event();
+                mEvent.setEvent_id(eventid);
+                mEvent.setEvent_title(title);
+                mEvent.setEvent_location(location);
+                mEvent.setEvent_date(date);
+                mEvent.setEvent_time(time);
+                mEvent.setEvent_image(img);
+
+                userRef.child("achievedEvents").child(eventid).setValue(mEvent);
+            }
+        });
+
     }
 
     private void init() {
@@ -223,9 +291,13 @@ public class EventDetailActivity extends AppCompatActivity {
         event_detail_language = findViewById(R.id.event_detail_language);
         event_detail_dress = findViewById(R.id.event_detail_dress);
         event_detail_refreshments = findViewById(R.id.event_detail_refreshments);
+        tv_likesCount = findViewById(R.id.tv_likesCount);
+        iv_fav = findViewById(R.id.iv_fav);
         tv_comment_count = findViewById(R.id.tv_comment_count);
         tv_view_comments = findViewById(R.id.tv_view_comments);
         tv_add_comment = findViewById(R.id.tv_add_comment);
+        textview24 = findViewById(R.id.textview24);
+        tv_achieved = findViewById(R.id.tv_achieved);
         button_apply = findViewById(R.id.button_apply);
         button_view_applicants = findViewById(R.id.button_view_applicants);
 
@@ -235,7 +307,7 @@ public class EventDetailActivity extends AppCompatActivity {
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         eventCommentsRef = FirebaseDatabase.getInstance().getReference().child("Comments");
     }
-
+    /*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_fav, menu);
@@ -262,4 +334,5 @@ public class EventDetailActivity extends AppCompatActivity {
         }
         return true;
     }
+    */
 }

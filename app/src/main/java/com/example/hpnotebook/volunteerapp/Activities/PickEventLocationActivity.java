@@ -160,12 +160,15 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
 
                 LatLng location = mMap.getCameraPosition().target;
 
-                event_latlng = location.toString();
+                Double lat = location.latitude;
+                Double lng = location.longitude;
+
+                //event_latlng = location.toString();
 
                 addEvent(key, event_title, event_userId, event_description,
                         event_date, event_time, event_location, event_category,
                         event_stipend, event_refreshments, event_dresscode,
-                        event_language, event_latlng);
+                        event_language, lat, lng);
 
             }
         });
@@ -176,7 +179,7 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
                           final String event_date, final String event_time,
                           final String event_location, final String event_category, final String event_stipend,
                           final String event_refreshments, final String event_dresscode, final String event_language,
-                          final String latLng) {
+                          final Double lat, final Double lng) {
 
         final ProgressDialog pd = new ProgressDialog(this);
         pd.setTitle("Uploading");
@@ -208,7 +211,7 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
                             Event event = new Event(event_id, event_title, event_userId,
                                     event_description, event_date, event_time, event_location,
                                     event_category, event_stipend, event_refreshments,
-                                    event_dresscode, event_language, imageUrl, latLng);
+                                    event_dresscode, event_language, imageUrl, lat, lng);
 
                             ref.child(key).setValue(event);
 

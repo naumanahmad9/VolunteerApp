@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class User {
 
-    private String name, uid, email, contact, location, gender, type, pass, description, imageURL;
-    private ArrayList<Event> userEvents;
+    private String name, uid, email, contact, location, gender, type, pass, description, imageURL, userEvents, achievedEvents;
 
     public User(String name, String uid, String email, String pass, String contact, String location, String gender,
-                String type, String description, String imageURL, ArrayList<Event> userEvents) {
+                String type, String description, String imageURL) {
         this.name = name;
         this.uid = uid;
         this.email = email;
@@ -19,11 +18,10 @@ public class User {
         this.type = type;
         this.description = description;
         this.imageURL = imageURL;
-        this.userEvents = userEvents;
     }
 
     public User(String name, String uid, String email, String pass, String contact, String location,
-                String type, String description, String imageURL, ArrayList<Event> userEvents) {
+                String type, String description, String imageURL) {
         this.name = name;
         this.uid = uid;
         this.email = email;
@@ -33,7 +31,6 @@ public class User {
         this.type = type;
         this.description = description;
         this.imageURL = imageURL;
-        this.userEvents = userEvents;
     }
 
     public User(String name, String uid, String email, String type) {
@@ -126,11 +123,19 @@ public class User {
         this.description = description;
     }
 
-    public ArrayList<Event> getUserEvents() {
+    public String getUserEvents() {
         return userEvents;
     }
 
-    public void setUserEvents(ArrayList<Event> userEvents) {
+    public void setUserEvents(String userEvents) {
         this.userEvents = userEvents;
+    }
+
+    public String getAchievedEvents() {
+        return achievedEvents;
+    }
+
+    public void setAchievedEvents(String achievedEvents) {
+        this.achievedEvents = achievedEvents;
     }
 }

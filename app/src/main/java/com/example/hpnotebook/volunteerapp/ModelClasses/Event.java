@@ -7,13 +7,14 @@ import java.util.ArrayList;
 public class Event {
     private String event_id, event_title, event_userId, event_description,
             event_date, event_time, event_location, event_category, event_stipend,
-            event_refreshments, event_dresscode, event_language, event_image, event_latlng, event_applicants;
+            event_refreshments, event_dresscode, event_language, event_image, event_applicants;
+    private Double lat, lng;
 
     public Event(String event_id, String event_title, String event_userId,
                  String event_description, String event_date, String event_time,
                  String event_location, String event_category, String event_stipend,
                  String event_refreshments, String event_dresscode, String event_language,
-                 String event_image, String event_latlng) {
+                 String event_image, Double lat, Double lng) {
 
         this.event_id = event_id;
         this.event_title = event_title;
@@ -28,7 +29,8 @@ public class Event {
         this.event_dresscode = event_dresscode;
         this.event_language = event_language;
         this.event_image = event_image;
-        this.event_latlng = event_latlng;
+        this.lat = lat;
+        this.lng = lng;
     }
 
     public Event(String event_id, String event_title, String event_date, String event_time,
@@ -150,12 +152,20 @@ public class Event {
         this.event_image = event_image;
     }
 
-    public String getEvent_latlng() {
-        return event_latlng;
+    public Double getLat() {
+        return lat;
     }
 
-    public void setEvent_latlng(String event_latlng) {
-        this.event_latlng = event_latlng;
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public String getEvent_applicants() {

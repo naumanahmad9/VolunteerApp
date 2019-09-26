@@ -81,7 +81,6 @@ public class OrgSignupFragment extends Fragment {
                 String type = "Organization";
                 String description = et_description.getText().toString();
                 String imageUrl = "default";
-                ArrayList<Event> userEvents = new ArrayList<>();
 
                 if (name.isEmpty()) {
                     signup_name.setError("This field is empty");
@@ -107,7 +106,7 @@ public class OrgSignupFragment extends Fragment {
                     fieldCheck = true;
                 }
                 if (!fieldCheck) {
-                    authUser(name, email, password, contact, location, type, description,imageUrl, userEvents);
+                    authUser(name, email, password, contact, location, type, description,imageUrl);
                 }
 
             }
@@ -116,7 +115,7 @@ public class OrgSignupFragment extends Fragment {
         return view;
     }
 
-    private void authUser(final String name, final String email, final String pass, final String contact, final String location, final String type, final String description, final String imageUrl, final ArrayList<Event> userEvents) {
+    private void authUser(final String name, final String email, final String pass, final String contact, final String location, final String type, final String description, final String imageUrl) {
 
         progressDialog.show();
 
@@ -128,7 +127,7 @@ public class OrgSignupFragment extends Fragment {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    signupUser(name, Objects.requireNonNull(user).getUid(), email, pass, contact, location, type, description, imageUrl, userEvents);
+                    signupUser(name, Objects.requireNonNull(user).getUid(), email, pass, contact, location, type, description, imageUrl);
 
                 } else {
                     Toast.makeText(getContext(), Objects.requireNonNull(task.getException()).toString(), Toast.LENGTH_SHORT).show();
@@ -137,9 +136,9 @@ public class OrgSignupFragment extends Fragment {
         });
     }
 
-    private void signupUser(String name, String uid, String email, String pass, String contact, String location, String type, String description, String imageUrl, ArrayList<Event> userEvents) {
+    private void signupUser(String name, String uid, String email, String pass, String contact, String location, String type, String description, String imageUrl) {
 
-        User user = new User(name, uid, email, pass, contact, location, type, description, imageUrl, userEvents);
+        User user = new User(name, uid, email, pass, contact, location, type, description, imageUrl);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(getContext(), DashboardActivity.class));
     }

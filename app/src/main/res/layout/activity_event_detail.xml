@@ -10,16 +10,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -31,6 +31,10 @@
                     android:id="@+id/event_detail_image"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginTop="0dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/karachi_volunteer_1" />
 
@@ -301,12 +305,55 @@
                     android:background="#80CFCFCF" />
 
                 <TextView
-                    android:id="@+id/tv_comment_count"
+                    android:id="@+id/tv_likesCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator1"
                     android:layout_marginStart="25dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:text="5"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator1"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toRightOf="@id/tv_likesCount"
+                    android:text="Likes"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:id="@+id/iv_fav"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_below="@id/separator1"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:paddingEnd="25dp"
+                    android:src="@drawable/ic_favorite_border_black" />
+
+                <View
+                    android:id="@+id/separator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/iv_fav"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#80CFCFCF" />
+
+                <TextView
+                    android:id="@+id/tv_comment_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator2"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
                     android:text="5"
                     android:textSize="20sp"
@@ -316,9 +363,9 @@
                     android:id="@+id/iv_comment"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
-                    android:layout_below="@id/separator1"
+                    android:layout_below="@id/separator2"
                     android:layout_marginStart="10dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginBottom="15dp"
                     android:layout_toEndOf="@id/tv_comment_count"
                     android:src="@drawable/ic_message_black_24dp" />
@@ -327,9 +374,9 @@
                     android:id="@+id/tv_view_comments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/separator1"
+                    android:layout_below="@id/separator2"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="15dp"
                     android:layout_toEndOf="@id/iv_comment"
@@ -340,13 +387,49 @@
                     android:id="@+id/tv_add_comment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/separator1"
+                    android:layout_below="@id/separator2"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="15dp"
                     android:layout_marginEnd="25dp"
-                    android:layout_marginBottom="70dp"
+                    android:layout_marginBottom="15dp"
                     android:text="Add comment"
                     android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/separator3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/iv_comment"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="#80CFCFCF" />
+
+                <TextView
+                    android:id="@+id/textview24"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator3"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="75dp"
+                    android:clickable="false"
+                    android:text="Event completed?"
+                    android:textSize="18dp"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/tv_achieved"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/separator3"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_toRightOf="@id/textview24"
+                    android:clickable="false"
+                    android:text=" Add to your Achieved events."
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    android:visibility="invisible" />
 
             </RelativeLayout>
         </ScrollView>
@@ -370,7 +453,7 @@
             android:text="View Applicants"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
