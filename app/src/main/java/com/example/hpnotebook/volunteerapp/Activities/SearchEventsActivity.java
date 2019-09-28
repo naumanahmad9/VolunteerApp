@@ -68,8 +68,14 @@ public class SearchEventsActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        startActivity(new Intent(SearchEventsActivity.this, NearbyEventsActivity.class));
+
+        Intent mIntent = new Intent(SearchEventsActivity.this, NearbyEventsActivity.class);
+
+        mIntent.putStringArrayListExtra("searchCategories", selectedItems);
+
+        startActivity(mIntent);
         overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+
         return true;
     }
 }

@@ -17,6 +17,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -34,6 +35,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NearbyEventsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMarkerClickListener {
@@ -41,6 +43,9 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     String mTitle = "Karachi Literature Festival";
     Double mLat = 24.82;
     Double mLng = 67.00;
+
+    ArrayList<String> categories;
+
 
     private GoogleMap mMap;
     private ChildEventListener mChildEventListener;
@@ -51,12 +56,24 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     String bestProvider;
     Location mLocation;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_events);
 
         getSupportActionBar().setTitle("Nearby Events");
+
+        categories = new ArrayList<>();
+        categories = getIntent().getStringArrayListExtra("searchCategories");
+
+        String allItems = "";
+        for(String str : categories){
+            allItems = allItems + " " + str; //adds a new line between items
+        }
+
+        Toast.makeText(getApplicationContext(), allItems, Toast.LENGTH_LONG).show();
+
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 

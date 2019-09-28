@@ -343,7 +343,7 @@ public class EventDetailActivity extends AppCompatActivity {
         });
 
         // *************** add to achieved events code ***************
-        
+
         tv_achieved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
