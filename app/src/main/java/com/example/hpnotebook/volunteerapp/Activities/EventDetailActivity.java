@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,8 +28,12 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.MutableData;
+import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class EventDetailActivity extends AppCompatActivity {
@@ -37,19 +42,23 @@ public class EventDetailActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef;
+    DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef, likesRef;
 
     ImageView event_detail_image, iv_fav;
     TextView event_detail_title, event_detail_location, event_detail_date, event_detail_time,
             event_detail_stipend, event_detail_category, event_detail_org, event_detail_language,
             event_detail_dress, event_detail_refreshments, tv_likesCount, tv_comment_count, tv_view_comments,
-            tv_add_comment, textview24, tv_achieved;
+            tv_add_comment, textview24, tv_achieved, textview25;
     Button button_apply, button_view_applicants;
     Event event;
     String eventid, event_org, title, location, date, time, img;
     User user;
     private boolean applyCheck = true;
     User applicant;
+    int dCount, lCount;
+
+    int likecount;
+    boolean like;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,19 +128,87 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
+        // *************** Likes code ***************
+
         iv_fav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (likeCheck) {
-                    iv_fav.setImageResource(R.drawable.ic_favorite_border_black);
-                    likeCheck = false;
-                }
-                else {
-                    iv_fav.setImageResource(R.drawable.ic_favorite_black);
-                    likeCheck = true;
-                }
+                like = true;
+
+                likesRef.child(eventid).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if(like) {
+
+                            if(dataSnapshot.hasChild(auth.getCurrentUser().getUid())) {
+
+                                likesRef.child(eventid).child(auth.getCurrentUser().getUid()).removeValue();
+
+                                int likecount = 0;
+                                likecount = dataSnapshot.child("likesCount").getValue(Integer.class);
+                                likesRef.child(eventid).child("likesCount").setValue(likecount-1);
+                                like = false;
+
+                                tv_likesCount.setText(String.valueOf(likecount));
+                                iv_fav.setImageResource(R.drawable.ic_favorite_border_black);
+                            }
+                            else {
+                                likesRef.child(eventid).child(auth.getCurrentUser().getUid()).setValue("like");
+
+                                int likecount = 0;
+                                if(dataSnapshot.hasChild("likesCount")) {
+                                    likecount = dataSnapshot.child("likesCount").getValue(Integer.class);
+                                }
+                                likesRef.child(eventid).child("likesCount").setValue(likecount+1);
+                                like = false;
+
+                                tv_likesCount.setText(String.valueOf(likecount));
+                                iv_fav.setImageResource(R.drawable.ic_favorite_black);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
+
+        likesRef.child(eventid).addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+
+                    int numOfLikes = 0;
+
+                    if(dataSnapshot.hasChild("likesCount")) {
+
+                        numOfLikes = dataSnapshot.child("likesCount").getValue(Integer.class);
+                        tv_likesCount.setText(String.valueOf(numOfLikes));
+
+                        if(numOfLikes == 1) {
+                            textview25.setText("Like");
+                        }
+                        else {
+                            textview25.setText("Likes");
+                        }
+                    }
+
+                    if(dataSnapshot.hasChild(auth.getCurrentUser().getUid())) {
+                        iv_fav.setImageResource(R.drawable.ic_favorite_black);
+                        likeCheck = true;
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        //  *************** Comments code ***************
 
         eventCommentsRef.child(eventid).addValueEventListener(new ValueEventListener() {
             @Override
@@ -164,6 +241,8 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
+        // *************** Apply button code ***************
+
         button_apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,7 +264,6 @@ public class EventDetailActivity extends AppCompatActivity {
                                         }
                                     });
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
@@ -193,7 +271,8 @@ public class EventDetailActivity extends AppCompatActivity {
 
                     userRef.child("userEvents").child(eventid).removeValue();
 
-                } else {
+                }
+                else {
                     userRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -229,6 +308,8 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
+        // *************** view applicants button code ***************
+
         button_view_applicants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -261,9 +342,13 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
+        // *************** add to achieved events code ***************
+        
         tv_achieved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                userRef.child("userEvents").child(eventid).removeValue();
 
                 Event mEvent = new Event();
                 mEvent.setEvent_id(eventid);
@@ -273,7 +358,13 @@ public class EventDetailActivity extends AppCompatActivity {
                 mEvent.setEvent_time(time);
                 mEvent.setEvent_image(img);
 
-                userRef.child("achievedEvents").child(eventid).setValue(mEvent);
+                userRef.child("achievedEvents").child(eventid).setValue(mEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Toast.makeText(EventDetailActivity.this, "Added to Achieved Events", Toast.LENGTH_SHORT).show();
+                        button_apply.setVisibility(View.GONE);
+                    }
+                });
             }
         });
 
@@ -297,6 +388,7 @@ public class EventDetailActivity extends AppCompatActivity {
         tv_view_comments = findViewById(R.id.tv_view_comments);
         tv_add_comment = findViewById(R.id.tv_add_comment);
         textview24 = findViewById(R.id.textview24);
+        textview25 = findViewById(R.id.textview25);
         tv_achieved = findViewById(R.id.tv_achieved);
         button_apply = findViewById(R.id.button_apply);
         button_view_applicants = findViewById(R.id.button_view_applicants);
@@ -304,6 +396,7 @@ public class EventDetailActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         eventRef = database.getReference("events");
+        likesRef = database.getReference("likes");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         eventCommentsRef = FirebaseDatabase.getInstance().getReference().child("Comments");
     }

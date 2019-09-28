@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Event {
     private String event_id, event_title, event_userId, event_description,
             event_date, event_time, event_location, event_category, event_stipend,
-            event_refreshments, event_dresscode, event_language, event_image, event_applicants;
+            event_refreshments, event_dresscode, event_language, event_image, event_applicants, likesUsers;
+    private int likesCount;
     private Double lat, lng;
 
     public Event(String event_id, String event_title, String event_userId,
@@ -29,6 +30,27 @@ public class Event {
         this.event_dresscode = event_dresscode;
         this.event_language = event_language;
         this.event_image = event_image;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public Event(String event_id, String event_title, String event_userId, String event_description, String event_date, String event_time, String event_location, String event_category, String event_stipend, String event_refreshments, String event_dresscode, String event_language, String event_image, String event_applicants, int likesCount, String likesUsers, Double lat, Double lng) {
+        this.event_id = event_id;
+        this.event_title = event_title;
+        this.event_userId = event_userId;
+        this.event_description = event_description;
+        this.event_date = event_date;
+        this.event_time = event_time;
+        this.event_location = event_location;
+        this.event_category = event_category;
+        this.event_stipend = event_stipend;
+        this.event_refreshments = event_refreshments;
+        this.event_dresscode = event_dresscode;
+        this.event_language = event_language;
+        this.event_image = event_image;
+        this.event_applicants = event_applicants;
+        this.likesCount = likesCount;
+        this.likesUsers = likesUsers;
         this.lat = lat;
         this.lng = lng;
     }
@@ -174,5 +196,21 @@ public class Event {
 
     public void setEvent_applicants(String event_applicants) {
         this.event_applicants = event_applicants;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
+    }
+
+    public String getLikesUsers() {
+        return likesUsers;
+    }
+
+    public void setLikesUsers(String likesUsers) {
+        this.likesUsers = likesUsers;
     }
 }

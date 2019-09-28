@@ -312,11 +312,12 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:text="5"
+                    android:text="0"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/textview25"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator1"
@@ -355,7 +356,7 @@
                     android:layout_marginStart="25dp"
                     android:layout_marginTop="15dp"
                     android:layout_marginBottom="15dp"
-                    android:text="5"
+                    android:text="0"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
