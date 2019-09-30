@@ -1,10 +1,8 @@
 package com.example.hpnotebook.volunteerapp.ModelClasses;
 
-import java.util.ArrayList;
-
 public class User {
 
-    private String name, uid, email, contact, location, gender, type, pass, description, imageURL, userEvents, achievedEvents;
+    private String name, uid, email, contact, location, gender, type, pass, description, imageURL;
 
     public User(String name, String uid, String email, String pass, String contact, String location, String gender,
                 String type, String description, String imageURL) {
@@ -32,6 +30,7 @@ public class User {
         this.description = description;
         this.imageURL = imageURL;
     }
+
 
     public User(String name, String uid, String email, String type) {
         this.name = name;
@@ -123,19 +122,4 @@ public class User {
         this.description = description;
     }
 
-    public String getUserEvents() {
-        return userEvents;
-    }
-
-    public void setUserEvents(String userEvents) {
-        this.userEvents = userEvents;
-    }
-
-    public String getAchievedEvents() {
-        return achievedEvents;
-    }
-
-    public void setAchievedEvents(String achievedEvents) {
-        this.achievedEvents = achievedEvents;
-    }
 }

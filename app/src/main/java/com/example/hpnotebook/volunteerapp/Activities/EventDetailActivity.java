@@ -42,7 +42,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef, likesRef;
+    DatabaseReference eventRef, userRef, eventUserIdRef, eventCommentsRef, likesRef, userEventsRef, achievedEvents;
 
     ImageView event_detail_image, iv_fav;
     TextView event_detail_title, event_detail_location, event_detail_date, event_detail_time,
@@ -269,7 +269,7 @@ public class EventDetailActivity extends AppCompatActivity {
                         }
                     });
 
-                    userRef.child("userEvents").child(eventid).removeValue();
+                    userEventsRef.child(auth.getCurrentUser().getUid()).child(eventid).removeValue();
 
                 }
                 else {
@@ -289,7 +289,6 @@ public class EventDetailActivity extends AppCompatActivity {
                                         }
                                     });
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
                         }
@@ -303,7 +302,7 @@ public class EventDetailActivity extends AppCompatActivity {
                     mEvent.setEvent_time(time);
                     mEvent.setEvent_image(img);
 
-                    userRef.child("userEvents").child(eventid).setValue(mEvent);
+                    userEventsRef.child(auth.getCurrentUser().getUid()).child(eventid).setValue(mEvent);
                 }
             }
         });
@@ -323,7 +322,7 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
 
-        userRef.child("userEvents").addValueEventListener(new ValueEventListener() {
+        userEventsRef.child(auth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -335,10 +334,8 @@ public class EventDetailActivity extends AppCompatActivity {
                     tv_achieved.setClickable(true);
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -348,8 +345,8 @@ public class EventDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                userRef.child("userEvents").child(eventid).removeValue();
-
+                userEventsRef.child(auth.getCurrentUser().getUid()).child(eventid).removeValue();
+                
                 Event mEvent = new Event();
                 mEvent.setEvent_id(eventid);
                 mEvent.setEvent_title(title);
@@ -358,7 +355,7 @@ public class EventDetailActivity extends AppCompatActivity {
                 mEvent.setEvent_time(time);
                 mEvent.setEvent_image(img);
 
-                userRef.child("achievedEvents").child(eventid).setValue(mEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
+                achievedEvents.child(auth.getCurrentUser().getUid()).child(eventid).setValue(mEvent).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         Toast.makeText(EventDetailActivity.this, "Added to Achieved Events", Toast.LENGTH_SHORT).show();
@@ -367,7 +364,6 @@ public class EventDetailActivity extends AppCompatActivity {
                 });
             }
         });
-
     }
 
     private void init() {
@@ -399,6 +395,8 @@ public class EventDetailActivity extends AppCompatActivity {
         likesRef = database.getReference("likes");
         userRef = database.getReference("users").child(auth.getCurrentUser().getUid());
         eventCommentsRef = FirebaseDatabase.getInstance().getReference().child("Comments");
+        userEventsRef = FirebaseDatabase.getInstance().getReference("userEvents");
+        achievedEvents = FirebaseDatabase.getInstance().getReference("achievedEvents");
     }
     /*
     @Override

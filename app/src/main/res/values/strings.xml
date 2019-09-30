@@ -2,10 +2,10 @@
 
     <string name="app_name">VolunteerApp</string>
 
-    <string name="facebook_application_id" translatable="false">your fb key</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fb your fb key</string>
+    <string name="facebook_application_id" translatable="false">1401931123311277</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb1401931123311277</string>
 
-    <string name="google_maps_api_key">your google api key</string>
+    <string name="google_maps_api_key">AIzaSyDSqaum6_getP8X6NHs2nA-Gb3aCIlqLrk</string>
 
     <string-array name="gender_spinner_entries">
         <item>Male</item>
@@ -19,6 +19,20 @@
 
     <string name="gender_hint">Gender</string>
     <string name="acc_type_hint">Account Type</string>
+
+    <string name="category_hint">Education</string>
+    <string-array name="category_spinner_entries">
+        <item>Education</item>
+        <item>Social Work</item>
+        <item>Healthcare</item>
+        <item>Technology</item>
+        <item>Cooking</item>
+        <item>Event Management</item>
+        <item>Donation</item>
+        <item>Marketing</item>
+        <item>Transportation</item>
+        <item>Other</item>
+    </string-array>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

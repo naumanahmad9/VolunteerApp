@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
@@ -43,8 +44,9 @@ import java.util.Objects;
 public class AddEventActivity extends AppCompatActivity {
 
     EditText et_event_title, et_event_description, et_event_date, et_event_time, et_event_location,
-            et_event_category, et_event_stipend, et_event_refreshments, et_event_dresscode,
+             et_event_stipend, et_event_refreshments, et_event_dresscode,
             et_event_language;
+    Spinner spinner_event_category;
     ImageView event_image;
     Button btn_event_add;
     Uri imageUri;
@@ -64,9 +66,6 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Add Event");
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -88,7 +87,7 @@ public class AddEventActivity extends AppCompatActivity {
                 String event_date = et_event_date.getText().toString();
                 String event_time = et_event_time.getText().toString();
                 String event_location = et_event_location.getText().toString();
-                String event_category = et_event_category.getText().toString();
+                String event_category = spinner_event_category.getSelectedItem().toString();
                 String event_stipend = et_event_stipend.getText().toString();
                 String event_refreshments = et_event_refreshments.getText().toString();
                 String event_dresscode = et_event_dresscode.getText().toString();
@@ -200,7 +199,7 @@ public class AddEventActivity extends AppCompatActivity {
         et_event_date = findViewById(R.id.et_event_date);
         et_event_time = findViewById(R.id.et_event_time);
         et_event_location = findViewById(R.id.et_event_location);
-        et_event_category = findViewById(R.id.et_event_category);
+        spinner_event_category = findViewById(R.id.spinner_event_category);
         et_event_stipend = findViewById(R.id.et_event_stipend);
         et_event_refreshments = findViewById(R.id.et_event_refreshments);
         et_event_dresscode = findViewById(R.id.et_event_dresscode);

@@ -42,7 +42,7 @@ public class AchievedEventsFragment extends Fragment {
     NewEventsListAdapter adapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventListingRef, userRef;
+    DatabaseReference achievedEvents, userRef;
     FirebaseUser user;
 
     public AchievedEventsFragment() {
@@ -56,8 +56,6 @@ public class AchievedEventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_achieved_events, container, false);
 
         rv_achieved_events = view.findViewById(R.id.rv_achieved_events);
-
-        rv_achieved_events = view.findViewById(R.id.rv_newEvents);
         events = new ArrayList<>();
         adapter = new NewEventsListAdapter(events, getContext());
 
@@ -68,8 +66,9 @@ public class AchievedEventsFragment extends Fragment {
         database = FirebaseDatabase.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
         userRef = database.getReference("users").child(user.getUid());
+        achievedEvents = FirebaseDatabase.getInstance().getReference("achievedEvents");
 
-        userRef.child("achievedEvents").addChildEventListener(new ChildEventListener() {
+        achievedEvents.child(auth.getCurrentUser().getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 

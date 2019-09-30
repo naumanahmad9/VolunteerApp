@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hpnotebook.volunteerapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -14,11 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="your google api key"/>
-
+            android:value="AIzaSyDSqaum6_getP8X6NHs2nA-Gb3aCIlqLrk" />
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -40,7 +38,12 @@
         <activity android:name=".Activities.UserProfileActivity" />
         <activity android:name=".Activities.PermissionActivity" />
         <activity android:name=".Activities.SocialSigninActivity" />
-        <activity android:name=".Activities.CommentsActivity"></activity>
+        <activity android:name=".Activities.CommentsActivity" />
+        <activity android:name=".Activities.PickEventLocationActivity" />
+        <activity android:name=".Activities.MapActivity" />
+        <activity android:name=".Activities.ViewApplicantsActivity" />
+        <activity android:name=".Activities.NearbyEventsActivity" />
+        <activity android:name=".Activities.UpdateProfileActivity"></activity>
     </application>
 
 </manifest>

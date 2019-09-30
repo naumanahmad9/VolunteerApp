@@ -13,12 +13,14 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -28,7 +30,14 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -36,6 +45,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class NearbyEventsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMarkerClickListener {
@@ -44,8 +54,9 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     Double mLat = 24.82;
     Double mLng = 67.00;
 
-    ArrayList<String> categories;
+    String selectedCategory;
 
+    List<Event> eventList;
 
     private GoogleMap mMap;
     private ChildEventListener mChildEventListener;
@@ -56,6 +67,13 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     String bestProvider;
     Location mLocation;
 
+    String eventid, eventTitle;
+
+    FirebaseAuth auth;
+    FirebaseDatabase database;
+    DatabaseReference eventRef;
+    Query query, q;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,34 +82,89 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
 
         getSupportActionBar().setTitle("Nearby Events");
 
+        /*
         categories = new ArrayList<>();
         categories = getIntent().getStringArrayListExtra("searchCategories");
 
         String allItems = "";
         for(String str : categories){
-            allItems = allItems + " " + str; //adds a new line between items
+            allItems = allItems + " " + str;
         }
 
         Toast.makeText(getApplicationContext(), allItems, Toast.LENGTH_LONG).show();
+        */
 
+        selectedCategory = getIntent().getStringExtra("selectedCategory");
+        //Toast.makeText(getApplicationContext(), selectedCategory, Toast.LENGTH_LONG).show();
 
+        eventList = new ArrayList<>();
+
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        eventRef = database.getReference("events");
+
+        query = database.getReference("events")
+                .orderByChild("event_category")
+                .equalTo(selectedCategory);
+
+        /*
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                eventList.clear();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Event event = snapshot.getValue(Event.class);
+                        eventList.add(event);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        */
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
 
     }
 
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         googleMap.setOnMarkerClickListener(this);
         googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+
+        /*
         LatLng location = new LatLng(mLat, mLng);
 
         mMap.addMarker(new MarkerOptions().position(location)
                 .title(mTitle))
                 .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+        */
 
+        /*
+        eventRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot s : dataSnapshot.getChildren()) {
+                    Event event = s.getValue(Event.class);
+                    LatLng location = new LatLng(event.getLat(), event.getLng());
+                    mMap.addMarker(new MarkerOptions().position(location).title(event.getEvent_title()))
+                            .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+        */
 
         Dexter.withActivity(this)
                 .withPermissions(Manifest.permission.ACCESS_FINE_LOCATION,
@@ -162,21 +235,96 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
             LatLng loc1 = new LatLng(currentLatitude, currentLongitude);
             mMap.addMarker(new MarkerOptions().position(loc1).title("Your Current Location"));
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(currentLatitude, currentLongitude), 15));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11), 2000, null);
         }
+
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                eventList.clear();
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+
+                        Event event = snapshot.getValue(Event.class);
+                        eventList.add(event);
+
+                        for (int i = 0; i < eventList.size(); i++) {
+                            Event mEvent = eventList.get(i);
+
+                            Double lat = mEvent.getLat();
+                            Double lng = mEvent.getLng();
+
+                            LatLng loc = new LatLng(lat, lng);
+
+                            mMap.addMarker(new MarkerOptions().position(loc).title(mEvent.getEvent_title()))
+                                    .setIcon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                eventTitle = marker.getTitle();
+
+                q = database.getReference("events")
+                        .orderByChild("event_title")
+                        .equalTo(eventTitle);
+
+                q.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Event e = snapshot.getValue(Event.class);
+                            eventid = e.getEvent_id();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+
+                Intent intent = new Intent(NearbyEventsActivity.this, EventDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventid", eventid);
+                intent.putExtras(bundle);
+                if(eventid != null) {
+                    startActivity(intent);
+                }
+
+                return false;
+            }
+        });
+
     }
+
     @Override
     public void onLocationChanged(Location location) {
     }
+
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
     }
+
     @Override
     public void onProviderEnabled(String provider) {
     }
+
     @Override
     public void onProviderDisabled(String provider) {
     }
+
     @Override
     public boolean onMarkerClick(Marker marker) {
         return false;

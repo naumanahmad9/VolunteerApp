@@ -40,7 +40,7 @@ import java.util.Objects;
 public class UserProfileActivity extends AppCompatActivity {
 
     ImageView profile_pic, profile_pic_edit;
-    TextView profile_name, profile_location, profile_desc, profile_signout;
+    TextView profile_name, profile_location, profile_desc, profile_signout, profile_update;
     FirebaseAuth auth;
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -99,6 +99,12 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        profile_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(UserProfileActivity.this, UpdateProfileActivity.class));
+            }
+        });
     }
 
     @Override
@@ -136,6 +142,7 @@ public class UserProfileActivity extends AppCompatActivity {
         profile_location = findViewById(R.id.profile_location);
         profile_desc = findViewById(R.id.profile_desc);
         profile_signout = findViewById(R.id.profile_signout);
+        profile_update = findViewById(R.id.profile_update);
 
         auth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference("uploads");

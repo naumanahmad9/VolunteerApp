@@ -55,7 +55,7 @@ public class MyEventsFragment extends Fragment {
     MyEventsListAdapter adapter;
     FirebaseAuth auth;
     FirebaseDatabase database;
-    DatabaseReference eventListingRef, userRef;
+    DatabaseReference eventListingRef, userRef, userEventsRef;
     FirebaseUser user;
 
     public MyEventsFragment() {
@@ -96,8 +96,9 @@ public class MyEventsFragment extends Fragment {
         eventListingRef = database.getReference("events");
         user = FirebaseAuth.getInstance().getCurrentUser();
         userRef = database.getReference("users").child(user.getUid());
+        userEventsRef = FirebaseDatabase.getInstance().getReference("userEvents");
 
-        userRef.child("userEvents").addChildEventListener(new ChildEventListener() {
+        userEventsRef.child(auth.getCurrentUser().getUid()).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
