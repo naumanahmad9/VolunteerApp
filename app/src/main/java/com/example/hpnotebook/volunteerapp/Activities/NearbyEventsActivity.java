@@ -289,7 +289,6 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
                             eventid = e.getEvent_id();
                         }
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                     }

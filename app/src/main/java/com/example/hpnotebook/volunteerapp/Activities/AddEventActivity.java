@@ -59,6 +59,7 @@ public class AddEventActivity extends AppCompatActivity {
     String key;
     String homeId;
     Bitmap bitmap;
+    private boolean fieldCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,22 +98,62 @@ public class AddEventActivity extends AppCompatActivity {
 
                 String event_userId = user.getUid();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("event_title", event_title);
-                bundle.putString("event_description", event_description);
-                bundle.putString("event_date", event_date);
-                bundle.putString("event_time", event_time);
-                bundle.putString("event_location", event_location);
-                bundle.putString("event_category", event_category);
-                bundle.putString("event_stipend", event_stipend);
-                bundle.putString("event_refreshments", event_refreshments);
-                bundle.putString("event_dresscode", event_dresscode);
-                bundle.putString("event_language", event_language);
-                bundle.putString("event_image", imageUri.toString());
+                if (event_title.isEmpty()) {
+                    et_event_title.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_description.isEmpty()) {
+                    et_event_description.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_date.isEmpty()) {
+                    et_event_date.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_time.isEmpty()) {
+                    et_event_time.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_location.isEmpty()) {
+                    et_event_location.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_stipend.isEmpty()) {
+                    et_event_stipend.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_refreshments.isEmpty()) {
+                    et_event_refreshments.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_dresscode.isEmpty()) {
+                    et_event_dresscode.setError("This field is empty");
+                    fieldCheck = true;
+                }
+                if (event_language.isEmpty()) {
+                    et_event_language.setError("This field is empty");
+                    fieldCheck = true;
+                }
 
-                Intent mIntent = new Intent(AddEventActivity.this, PickEventLocationActivity.class);
-                mIntent.putExtras(bundle);
-                startActivity(mIntent);
+                if (!fieldCheck) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_title", event_title);
+                    bundle.putString("event_description", event_description);
+                    bundle.putString("event_date", event_date);
+                    bundle.putString("event_time", event_time);
+                    bundle.putString("event_location", event_location);
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_stipend", event_stipend);
+                    bundle.putString("event_refreshments", event_refreshments);
+                    bundle.putString("event_dresscode", event_dresscode);
+                    bundle.putString("event_language", event_language);
+                    bundle.putString("event_image", imageUri.toString());
+
+                    Intent mIntent = new Intent(AddEventActivity.this, PickEventLocationActivity.class);
+                    mIntent.putExtras(bundle);
+                    startActivity(mIntent);
+                }
 
                 /*
                 imageRef = storage.getReference("event images/" + key);
