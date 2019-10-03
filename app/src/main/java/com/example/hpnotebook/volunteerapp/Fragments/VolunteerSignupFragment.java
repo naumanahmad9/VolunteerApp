@@ -143,6 +143,7 @@ public class VolunteerSignupFragment extends Fragment {
         User user = new User(name, uid, email, pass, contact, location, gender, type, description, imageUrl);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(getContext(), DashboardActivity.class));
+        getActivity().finish();
     }
 
 }

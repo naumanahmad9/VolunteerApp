@@ -215,12 +215,13 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
 
                             ref.child(key).setValue(event);
 
-
                             pd.dismiss();
 
-                            Toast.makeText(PickEventLocationActivity.this, "Listing added", Toast.LENGTH_LONG).show();
+                            Toast.makeText(PickEventLocationActivity.this, "Event added", Toast.LENGTH_LONG).show();
 
-                            startActivity(new Intent(PickEventLocationActivity.this, DashboardActivity.class));
+                            Intent i = new Intent(PickEventLocationActivity.this, DashboardActivity.class);
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(i);
                             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
                             finish();
@@ -303,6 +304,19 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
         manager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mCriteria = new Criteria();
         bestProvider = String.valueOf(manager.getBestProvider(mCriteria, true));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    Activity#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for Activity#requestPermissions for more details.
+                return;
+            }
+        }
         mLocation = manager.getLastKnownLocation(bestProvider);
         if (mLocation != null) {
             Log.e("TAG", "GPS is on");

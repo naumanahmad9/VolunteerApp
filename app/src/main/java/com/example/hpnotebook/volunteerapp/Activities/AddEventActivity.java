@@ -153,6 +153,7 @@ public class AddEventActivity extends AppCompatActivity {
                     Intent mIntent = new Intent(AddEventActivity.this, PickEventLocationActivity.class);
                     mIntent.putExtras(bundle);
                     startActivity(mIntent);
+
                 }
 
                 /*
@@ -257,7 +258,7 @@ public class AddEventActivity extends AppCompatActivity {
 
     public void opengallery(View view) {
         Intent gallery = new Intent();
-        gallery.setAction(Intent.ACTION_PICK);
+        gallery.setAction(Intent.ACTION_OPEN_DOCUMENT);
         gallery.setType("image/*");
         int pick_image = 1;
         startActivityForResult(Intent.createChooser(gallery, "Select"), pick_image);
@@ -274,5 +275,6 @@ public class AddEventActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }

@@ -71,7 +71,6 @@ public class DashboardActivity extends AppCompatActivity {
             case R.id.search:
                 startActivity(new Intent(this, SearchEventsActivity.class));
                 overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-                finish();
                 return true;
         }
 

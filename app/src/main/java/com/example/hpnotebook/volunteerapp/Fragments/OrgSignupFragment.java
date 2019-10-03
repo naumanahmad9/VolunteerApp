@@ -141,6 +141,7 @@ public class OrgSignupFragment extends Fragment {
         User user = new User(name, uid, email, pass, contact, location, type, description, imageUrl);
         userRef.child(uid).setValue(user);
         startActivity(new Intent(getContext(), DashboardActivity.class));
+        getActivity().finish();
     }
 
 }

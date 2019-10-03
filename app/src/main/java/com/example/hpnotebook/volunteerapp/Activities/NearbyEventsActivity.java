@@ -50,10 +50,6 @@ import java.util.List;
 
 public class NearbyEventsActivity extends AppCompatActivity implements OnMapReadyCallback, LocationListener, GoogleMap.OnMarkerClickListener {
 
-    String mTitle = "Karachi Literature Festival";
-    Double mLat = 24.82;
-    Double mLng = 67.00;
-
     String selectedCategory;
 
     List<Event> eventList;
@@ -73,7 +69,7 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     FirebaseDatabase database;
     DatabaseReference eventRef;
     Query query, q;
-
+    boolean check1, check2 = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +89,8 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
 
         Toast.makeText(getApplicationContext(), allItems, Toast.LENGTH_LONG).show();
         */
+
+        eventTitle = null;
 
         selectedCategory = getIntent().getStringExtra("selectedCategory");
         //Toast.makeText(getApplicationContext(), selectedCategory, Toast.LENGTH_LONG).show();
@@ -269,7 +267,7 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
+        /*
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -305,6 +303,7 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
                 return false;
             }
         });
+        */
 
     }
 
@@ -326,8 +325,40 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
 
     @Override
     public boolean onMarkerClick(Marker marker) {
+
+        eventTitle = marker.getTitle();
+
+        q = database.getReference("events")
+                .orderByChild("event_title")
+                .equalTo(marker.getTitle());
+
+        q.addValueEventListener(vel);
+
+
         return false;
     }
+
+    ValueEventListener vel = new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                Event e = snapshot.getValue(Event.class);
+                eventid = e.getEvent_id();
+
+                Intent intent = new Intent(NearbyEventsActivity.this, EventDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("eventid", eventid);
+                intent.putExtras(bundle);
+                if (eventid != null) {
+                    startActivity(intent);
+                }
+            }
+        }
+
+        @Override
+        public void onCancelled(@NonNull DatabaseError databaseError) {
+        }
+    };
 
     private void showSettingsDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(NearbyEventsActivity.this);

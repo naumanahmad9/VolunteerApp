@@ -68,12 +68,15 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             public void onDataChange(DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
 
+                holder.image_profile.setImageResource(R.drawable.ic_person_black_small);
+                /*
                 if (user.getImageURL().equals("default")){
                     holder.image_profile.setImageResource(R.drawable.ic_person_black_small);
                 }
                 else {
                     Glide.with(mContext).load(user.getImageURL()).into(holder.image_profile);
                 }
+                */
 
                 holder.username.setText(user.getName());
             }
@@ -139,6 +142,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
             comment = itemView.findViewById(R.id.comment);
         }
     }
+
     /*
     private void getUserInfo(final ImageView imageView, final TextView username, String publisherid) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
