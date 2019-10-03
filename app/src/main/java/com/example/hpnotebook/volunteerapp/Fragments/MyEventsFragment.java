@@ -51,7 +51,6 @@ public class MyEventsFragment extends Fragment {
     */
 
     RecyclerView rv_my_events;
-    TextView emptyView;
     ImageView add_new_event;
     ArrayList<Event> events;
     MyEventsListAdapter adapter;
@@ -90,7 +89,6 @@ public class MyEventsFragment extends Fragment {
         events = new ArrayList<>();
         adapter = new MyEventsListAdapter(events, getContext());
 
-        emptyView = view.findViewById(R.id.empty_view);
         rv_my_events.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_my_events.setAdapter(adapter);
 

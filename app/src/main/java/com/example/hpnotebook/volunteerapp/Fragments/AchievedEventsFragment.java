@@ -39,7 +39,6 @@ import java.util.Objects;
 public class AchievedEventsFragment extends Fragment {
 
     RecyclerView rv_achieved_events;
-    TextView emptyView;
     ArrayList<Event> events;
     NewEventsListAdapter adapter;
     FirebaseAuth auth;
@@ -61,7 +60,6 @@ public class AchievedEventsFragment extends Fragment {
         events = new ArrayList<>();
         adapter = new NewEventsListAdapter(events, getContext());
 
-        emptyView = view.findViewById(R.id.empty_view);
         rv_achieved_events.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_achieved_events.setAdapter(adapter);
 
