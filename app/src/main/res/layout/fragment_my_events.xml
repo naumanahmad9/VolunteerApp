@@ -4,7 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragments.MyEventsFragment">
-
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textColor="#8b8b8b"
+        android:text="No Events"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_my_events"
         android:layout_width="match_parent"

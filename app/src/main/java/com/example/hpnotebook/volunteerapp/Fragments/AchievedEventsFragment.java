@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.Activities.AddEventActivity;
@@ -38,6 +39,7 @@ import java.util.Objects;
 public class AchievedEventsFragment extends Fragment {
 
     RecyclerView rv_achieved_events;
+    TextView emptyView;
     ArrayList<Event> events;
     NewEventsListAdapter adapter;
     FirebaseAuth auth;
@@ -59,6 +61,7 @@ public class AchievedEventsFragment extends Fragment {
         events = new ArrayList<>();
         adapter = new NewEventsListAdapter(events, getContext());
 
+        emptyView = view.findViewById(R.id.empty_view);
         rv_achieved_events.setLayoutManager(new LinearLayoutManager(getContext()));
         rv_achieved_events.setAdapter(adapter);
 

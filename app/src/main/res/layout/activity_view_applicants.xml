@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".Activities.ViewApplicantsActivity">
 
+    <TextView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textColor="#8b8b8b"
+        android:text="No Applicants"
+        />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_applicants"
@@ -13,4 +23,5 @@
         android:layout_height="wrap_content">
 
     </android.support.v7.widget.RecyclerView>
+
 </RelativeLayout>
