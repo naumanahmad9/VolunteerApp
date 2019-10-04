@@ -65,14 +65,18 @@ public class UserProfileActivity extends AppCompatActivity {
                 User user = dataSnapshot.getValue(User.class);
 
                 profile_name.setText(user.getName());
-                profile_location.setText(user.getLocation());
-                profile_desc.setText(user.getDescription());
 
-                if (user.getImageURL().equals("default")){
-                    profile_pic.setImageResource(R.drawable.ic_person_black_24dp);
+                if(dataSnapshot.hasChild("imageURL")) {
+                    if (user.getImageURL().equals("default")) {
+                        profile_pic.setImageResource(R.drawable.ic_person_black_24dp);
+                    }
+                    else {
+                        Glide.with(UserProfileActivity.this).load(user.getImageURL()).into(profile_pic);
+                    }
                 }
-                else {
-                    Glide.with(UserProfileActivity.this).load(user.getImageURL()).into(profile_pic);
+                if(dataSnapshot.hasChild("description") && dataSnapshot.hasChild("location")) {
+                    profile_location.setText(user.getLocation());
+                    profile_desc.setText(user.getDescription());
                 }
             }
 

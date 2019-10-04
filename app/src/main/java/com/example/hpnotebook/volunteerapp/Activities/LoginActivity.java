@@ -78,7 +78,9 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Log in");
+        //Objects.requireNonNull(getSupportActionBar()).setTitle("Log in");
+
+        getSupportActionBar().hide();
 
         init();
         // progressDialog = new ProgressDialog(this);
@@ -237,7 +239,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void googleLogin() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("get it from google services file")
+                .requestIdToken("113172295190-dft6ctl4gummnev4ts38j6irpos8an1t.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
