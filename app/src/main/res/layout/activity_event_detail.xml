@@ -58,20 +58,21 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginStart="30dp"
                     app:cardCornerRadius="3dp"
-                    app:cardElevation="10dp"
+                    app:cardElevation="12dp"
                     app:cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="10dp"
+                        android:layout_gravity="center_horizontal"
                         android:textAlignment="center">
 
                         <ImageView
                             android:id="@+id/location_icon"
                             android:layout_width="45dp"
                             android:layout_height="45dp"
-                            android:layout_marginStart="25dp"
+                            android:layout_alignParentStart="true"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="12dp"
                             android:src="@drawable/ic_place_orange" />
@@ -80,7 +81,7 @@
                             android:id="@+id/event_detail_location"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginBottom="12dp"
                             android:layout_toRightOf="@id/location_icon"
@@ -92,7 +93,7 @@
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:layout_below="@id/location_icon"
-                            android:layout_marginStart="25dp"
+                            android:layout_alignParentStart="true"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="12dp"
                             android:src="@drawable/ic_date_range_orange" />
@@ -102,7 +103,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/event_detail_location"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="12dp"
                             android:layout_toRightOf="@id/location_icon"
@@ -126,11 +127,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/event_detail_location"
-                            android:layout_marginStart="3dp"
+                            android:layout_marginStart="2dp"
                             android:layout_marginTop="18dp"
                             android:layout_marginBottom="12dp"
                             android:layout_toRightOf="@id/tv_comma"
-                            android:text="5:00 PM"
+                            android:text="5:00"
                             android:textSize="22sp" />
 
                         <ImageView
@@ -138,7 +139,7 @@
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:layout_below="@id/date_icon"
-                            android:layout_marginStart="25dp"
+                            android:layout_alignParentStart="true"
                             android:layout_marginEnd="30dp"
                             android:layout_marginBottom="12dp"
                             android:src="@drawable/ic_money_orange" />
@@ -148,7 +149,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/event_detail_date"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="12dp"
                             android:layout_marginBottom="12dp"
                             android:layout_toRightOf="@id/location_icon"
@@ -172,7 +173,7 @@
                             android:layout_width="45dp"
                             android:layout_height="45dp"
                             android:layout_below="@id/money_icon"
-                            android:layout_marginStart="25dp"
+                            android:layout_alignParentStart="true"
                             android:layout_marginEnd="30dp"
                             android:src="@drawable/ic_category_orange" />
 
@@ -181,7 +182,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/event_detail_stipend"
-                            android:layout_marginStart="12dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="14dp"
                             android:layout_toRightOf="@id/location_icon"
                             android:text="Education"
@@ -228,8 +229,9 @@
                     android:layout_below="@id/event_detail_description"
                     android:layout_marginStart="5dp"
                     android:layout_marginBottom="18dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_toRightOf="@id/textview6"
-                    android:text="Oxford University Press, Karachi"
+                    android:text="Oxford University Press "
                     android:textSize="18sp" />
 
                 <TextView
@@ -377,12 +379,12 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator2"
                     android:layout_marginStart="30dp"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="15dp"
                     android:layout_toEndOf="@id/iv_comment"
                     android:text="View comments"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/tv_add_comment"
@@ -390,11 +392,11 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/separator2"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="18dp"
                     android:layout_marginEnd="25dp"
                     android:layout_marginBottom="15dp"
                     android:text="Add comment"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <View
                     android:id="@+id/separator3"

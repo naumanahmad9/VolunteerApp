@@ -23,11 +23,10 @@
 
             <EditText
                 android:id="@+id/et_name"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_person_black_small"
                 android:hint="Full Name"
                 android:paddingStart="12dp"
@@ -36,11 +35,10 @@
 
             <EditText
                 android:id="@+id/et_email"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_email_black_24dp"
                 android:hint="Email address"
                 android:paddingStart="12dp"
@@ -50,11 +48,10 @@
 
             <EditText
                 android:id="@+id/et_contact"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_phone_black"
                 android:hint="Contact Number"
                 android:paddingStart="12dp"
@@ -64,11 +61,10 @@
 
             <EditText
                 android:id="@+id/et_password"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_key_black"
                 android:hint="Password"
                 android:paddingStart="12dp"
@@ -78,11 +74,10 @@
 
             <EditText
                 android:id="@+id/et_location"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_location_on_black_24dp"
                 android:hint="Location"
                 android:paddingStart="12dp"
@@ -92,11 +87,10 @@
 
             <EditText
                 android:id="@+id/et_description"
-                android:layout_width="349dp"
+                android:layout_width="330dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="31dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="31dp"
+                android:layout_centerHorizontal="true"
                 android:hint="Tell something about the organization"
                 android:inputType="textMultiLine"
                 android:paddingStart="12dp"

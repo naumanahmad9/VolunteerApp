@@ -23,9 +23,9 @@
 
                 <EditText
                     android:id="@+id/et_name"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="25dp"
                     android:drawableEnd="@drawable/ic_person_black_small"
                     android:hint="Full Name"
@@ -35,11 +35,10 @@
 
                 <EditText
                     android:id="@+id/et_email"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="31dp"
+                    android:layout_centerHorizontal="true"
                     android:drawableEnd="@drawable/ic_email_black_24dp"
                     android:hint="Email address"
                     android:paddingStart="12dp"
@@ -49,11 +48,10 @@
 
                 <EditText
                     android:id="@+id/et_contact"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="31dp"
+                    android:layout_centerHorizontal="true"
                     android:drawableEnd="@drawable/ic_phone_black"
                     android:hint="Contact Number"
                     android:paddingStart="12dp"
@@ -63,11 +61,10 @@
 
                 <EditText
                     android:id="@+id/et_password"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="31dp"
+                    android:layout_centerHorizontal="true"
                     android:drawableEnd="@drawable/ic_key_black"
                     android:hint="Password"
                     android:paddingStart="12dp"
@@ -77,11 +74,10 @@
 
                 <EditText
                     android:id="@+id/et_location"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="31dp"
+                    android:layout_centerHorizontal="true"
                     android:drawableEnd="@drawable/ic_location_on_black_24dp"
                     android:hint="Location"
                     android:paddingStart="12dp"
@@ -92,10 +88,11 @@
                 <Spinner
                     android:id="@+id/spinner_gender"
                     style="@style/Widget.AppCompat.Spinner.Underlined"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp"
+                    android:paddingStart="3dp"
                     android:entries="@array/gender_spinner_entries"
                     android:prompt="@string/gender_hint"
                     android:spinnerMode="dialog"
@@ -104,11 +101,10 @@
 
                 <EditText
                     android:id="@+id/et_description"
-                    android:layout_width="349dp"
+                    android:layout_width="330dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="31dp"
                     android:layout_marginTop="16dp"
-                    android:layout_marginEnd="31dp"
+                    android:layout_centerHorizontal="true"
                     android:hint="Tell something about you"
                     android:inputType="textMultiLine"
                     android:paddingStart="12dp"
@@ -122,7 +118,7 @@
                     android:layout_width="132dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="31dp"
                     android:layout_marginBottom="60dp"
                     android:background="@drawable/button_bg"
