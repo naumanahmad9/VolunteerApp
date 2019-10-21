@@ -67,6 +67,7 @@
                 android:layout_centerHorizontal="true"
                 android:drawableEnd="@drawable/ic_key_black"
                 android:hint="Password"
+                android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:textColorHint="#6b6a6a"
                 android:textSize="20sp"

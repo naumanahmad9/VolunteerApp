@@ -46,7 +46,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
     ImageView event_detail_image, iv_fav;
     TextView event_detail_title, event_detail_location, event_detail_date, event_detail_time,
-            event_detail_stipend, event_detail_category, event_detail_org, event_detail_language,
+            event_detail_stipend, event_detail_category, event_detail_description, event_detail_org, event_detail_language,
             event_detail_dress, event_detail_refreshments, tv_likesCount, tv_comment_count, tv_view_comments,
             tv_add_comment, textview24, tv_achieved, textview25;
     Button button_apply, button_view_applicants;
@@ -94,6 +94,7 @@ public class EventDetailActivity extends AppCompatActivity {
                 event_detail_time.setText(time);
                 event_detail_stipend.setText(event.getEvent_stipend());
                 event_detail_category.setText(event.getEvent_category());
+                event_detail_description.setText(event.getEvent_description());
                 event_detail_language.setText(event.getEvent_language());
                 event_detail_dress.setText(event.getEvent_dresscode());
                 event_detail_refreshments.setText(event.getEvent_refreshments());
@@ -374,6 +375,7 @@ public class EventDetailActivity extends AppCompatActivity {
         event_detail_time = findViewById(R.id.event_detail_time);
         event_detail_stipend = findViewById(R.id.event_detail_stipend);
         event_detail_category = findViewById(R.id.event_detail_category);
+        event_detail_description = findViewById(R.id.event_detail_description);
         event_detail_org = findViewById(R.id.event_detail_org);
         event_detail_language = findViewById(R.id.event_detail_language);
         event_detail_dress = findViewById(R.id.event_detail_dress);

@@ -136,7 +136,6 @@ public class NearbyEventsActivity extends AppCompatActivity implements OnMapRead
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         googleMap.setOnMarkerClickListener(this);
-        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
 
         /*
         LatLng location = new LatLng(mLat, mLng);

@@ -68,6 +68,7 @@
                     android:drawableEnd="@drawable/ic_key_black"
                     android:hint="Password"
                     android:paddingStart="12dp"
+                    android:inputType="textPassword"
                     android:textColorHint="#6b6a6a"
                     android:textSize="20sp"
                     android:layout_below="@id/et_contact"/>
