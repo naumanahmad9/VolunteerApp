@@ -219,11 +219,15 @@ public class PickEventLocationActivity extends AppCompatActivity implements OnMa
 
                             Toast.makeText(PickEventLocationActivity.this, "Event added", Toast.LENGTH_LONG).show();
 
-                            Intent i = new Intent(PickEventLocationActivity.this, DashboardActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("eventid", event_id);
+
+                            Intent i = new Intent(PickEventLocationActivity.this, EventDetailActivity.class);
+                            i.putExtras(bundle);
                             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
                             startActivity(i);
                             overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
-
                             finish();
                         }
                     }

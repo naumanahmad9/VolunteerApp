@@ -36,6 +36,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -44,8 +47,12 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,6 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseDatabase database;
     DatabaseReference userRef;
     FirebaseUser user, firebaseUser;
+    Query query;
 
     private boolean fieldCheck;
     private int LOGIN = 1;
@@ -72,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 
     GoogleApiClient mGoogleApiClient;
     CallbackManager callbackManager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,6 +101,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 login();
+
+
             }
         });
 
@@ -111,22 +122,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        checkInternetConnectivity();
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        //check if user is null
-        if (firebaseUser != null){
-            startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-            finish();
-        }
-    }
-
     private void authUser(String email, String pass) {
 
         //progressDialog.show();
@@ -139,7 +134,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (task.isSuccessful()) {
                     user = auth.getCurrentUser();
-                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+
+                    startActivity(new Intent(LoginActivity.this, WelcomeActivity.class));
                     overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
                     finish();
                 }
@@ -396,6 +392,7 @@ public class LoginActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         userRef = database.getReference("users");
+
     }
 
 }

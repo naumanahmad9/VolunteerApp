@@ -14,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.hpnotebook.volunteerapp.Activities.DashboardActivity;
+import com.example.hpnotebook.volunteerapp.Activities.OrgActivity;
 import com.example.hpnotebook.volunteerapp.ModelClasses.Event;
 import com.example.hpnotebook.volunteerapp.ModelClasses.User;
 import com.example.hpnotebook.volunteerapp.R;
@@ -140,7 +141,7 @@ public class OrgSignupFragment extends Fragment {
 
         User user = new User(name, uid, email, pass, contact, location, type, description, imageUrl);
         userRef.child(uid).setValue(user);
-        startActivity(new Intent(getContext(), DashboardActivity.class));
+        startActivity(new Intent(getContext(), OrgActivity.class));
         getActivity().finish();
     }
 

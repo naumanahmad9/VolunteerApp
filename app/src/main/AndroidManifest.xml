@@ -14,6 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activities.WelcomeActivity"></activity>
+        <activity android:name=".Activities.OrgActivity" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDSqaum6_getP8X6NHs2nA-Gb3aCIlqLrk" />
@@ -43,7 +46,7 @@
         <activity android:name=".Activities.MapActivity" />
         <activity android:name=".Activities.ViewApplicantsActivity" />
         <activity android:name=".Activities.NearbyEventsActivity" />
-        <activity android:name=".Activities.UpdateProfileActivity"></activity>
+        <activity android:name=".Activities.UpdateProfileActivity" />
     </application>
 
 </manifest>
